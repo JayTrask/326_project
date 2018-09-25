@@ -1,27 +1,38 @@
-# TEAM NAME
+# Big-O
 
-# WEB APPLICATION NAME
+# HiveList
 
 # Team Overview
 
-* Team Member Name 1, Github Username 1
-* Team Member Name 2, Github Username 2
-* Team Member Name 3, Github Username 3
-* Team Member Name 4, Github Username 4
-* Team Member Name 5, Github Username 5
+* Jay Trask, JayTrask
+* Emily Earl, eearl
+* Collin Giguere, cdgiguere
+* Olivia Higgins, omhiggins
+* Caleb Carr, Caleb-Carr
+* Omar Sanchez, Osanchez
 
 # Innovative Idea
 
-Please describe your team's innovative idea for your project.
+HiveList is a collaborative playlist builder. The application will be built on top of the spotify API. The objective of the application is to allow several people to build a playlist together, vote on which songs should be added to the playlist, and eventually export the playlist to spotify.
 
 # Important Data
 
-Please describe the important data that your application will be managing.
+HiveList will implement the following datasets:
+* Spotify Data
+* User Data
+* Playlist Data
+* Voting Data
+* Statistical Data (Top songs, Playlists, etc.)
 
 # User Interface
 
-Provide a description and images of the user interface your
-application will intend on supporting.
+The Following pages will be created for the application:
+* Login/Create Account
+* Home Screen
+* Playlist Creation Home
+* Playlist Settings
+* Recommendations
+* User Profile
 
 ![example image](imgs/chick.jpg)
 
