@@ -35,10 +35,10 @@
   			</li>
 
   			<li class="nav-item">
-    			<a class="nav-link nav-item" href="currentPlaylist.html">My Lists</a>
+    			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
   			</li>
 
-  			<li class="nav-item'>
+  			<li class="nav-item">
     			<a class="nav-link nav-item" href="profile.html">Profile</a>
   			</li>
 
@@ -55,74 +55,48 @@
 		<div class="row">
 		
 		<!-- main cards -->
-			<div class="col-md-8 your-contributions">
+			<div class="col-md-3 your-contributions">
 				<div class="card gedf-card ps-body">
 					<div class="card-body">
 						<!---contributions-->
 						<div class="ps-general">
-							<h1>Your Contributions</h1>
-							<body>
-							<ul class="list-group">
-								<li class="list-group-item">Playlist 1
-		            						<ul class="list-group">
-			                					<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>	
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-						    			</ul>
-								</li>
-								<li class="list-group-item">Playlist 2
-									<ul class="list-group">
-										<li class="list-group-item">Song</li>
-										<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-					            				<li class="list-group-item">Song</li>
-									</ul>
-								</li>
-							</ul>
-							</body>
+							<h2>Your Contributions</h2>
+								<table class="table table-hover">
+	 						<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Date Added</th></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 					</table>
+	 					<table class="table table-hover">
+								<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Date Added</th></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+	 					</table>
 						</div>
 					</div>
 					<br>
 				</div>
 			</div>
-			
-			<!-- side cards -->
-			<div class="col-md-4">
+
+			<div class="col-md-6">
 				<!---Suggestions-->
 				<div class="card gedf-card your-suggestions">
 					<div class="card-body">
-						<h1>Your Suggestions</h1>
-						<body>	
-							<ul class="list-group">
-								<li class="list-group-item">Playlist 1</li>
-								<li class="list-group-item">Playlist 2</li>
-								<li class="list-group-item">Playlist 3</li>
-								<li class="list-group-item">Playlist 4</li>
-								<li class="list-group-item">Playlist 5</li>
-								<li class="list-group-item">Playlist 6</li>
-								<li class="list-group-item">Playlist 7</li>
-								<li class="list-group-item">Playlist 8</li>
-								<li class="list-group-item">Playlist 9</li>
-								<li class="list-group-item">Playlist 10</li>
-							</ul>
-						</body>
+						<h1>Profile Overview</h1>
+						<div class="card gedf-card">
+	 						<div class="card-body">
+	 							<h2><img src="exampleProfile.png" width="50" height="50" class="logo"> Billy</h2>
+	 							<p class="contrNum">Joined September 2018<br>16 Contributions<br>Created 2 Playlists<br>Joined 5 Playlists</p> <!-- contrNum = # number of contributions -->
+
+
+	 						</div>
+	 					</div>
 					</div>
 				</div>
 
@@ -130,13 +104,86 @@
 					<div class="card-body">
 						<h1>User Settings</h1>
 						<body>	
-							<tr><td>Email Addresses:</tr></td>
 							<br>
-							<tr><td>Playlist Name: <input type="text" name="playlistname" style="width: 200px;"></tr></td>
-							<tr><td>Email Addresses:</tr></td>
+							<h4>Email Addresses:</h4>
+							<table class="table table-striped">
+        						<tr><td> Email 1</td><td>Remove</td></tr>
+        						<tr><td> Email 2</td><td>Remove</td></tr>
+							<br>
+							</table>
+							<tr><td>Add email address: <input type="text" name="email address" style="width: 200px;"></tr></td>
+							<button type="button" onclick="alert('Email added (need to add functionality).')" style="height:30px;width:120px">Add</button>
+							<br>
+							<h4>Change Password:</h4>
+							<br>
+								<tr><td>Current Password: <input type="text" name="current_pass" style="width: 200px;"></tr></td>
+								<br>
+								<tr><td>New Password: <input type="text" name="new_pass" style="width: 200px;"></tr></td>
+								<br>
+								<tr><td>Confirm New Password: <input type="text" name="confirm_pass" style="width: 200px;"></tr></td>
+								<br>
+								<button type="button" onclick="alert('Password Changed (need to do checking though).')" style="height:30px;width:120px">Change Password</button>
+							<br>
+							<h4>Default Privacy Settings: </h4>
+								<br>
+								<form>
+								<input type="radio" name="Access" value="public_priv" checked> Public
+								<br>
+								<input type="radio" name="Access" value="private_priv"> Private (only friends)
+								<br>
+								<input type="radio" name="Access" value="anon_priv"> Anonymous for all
+								<br>
+							</form>
 						</body>
 					</div>
 				</div>
+			</div>
+				<!--	<div class = "card gedf-card user-settings">
+						<div class="card-body">
+							<h1>User Settings</h1>
+								<tr><td>Email Address:</td><td> Billy@example.com</td></tr>
+								<br>
+								<tr><td>User Setting 1: <input type="text" name="playlistname" style="width: 200px;"></td></tr>
+								<br>
+								<tr><td>User Setting 2: <input type="text" name="playlistname" style="width: 200px;"></td></tr>
+						</div>
+					</div>
+				</div>
+			-->
+
+			
+			<!-- side cards -->
+			<div class="col-md-3">
+				<!---Suggestions-->
+				<div class="card gedf-card your-suggestions">
+					<div class="card-body">
+						<h2>Your Suggestions</h2>
+						<body>	
+							<ul class="list-group">
+								<li class="list-group-item">Playlist 1</li>
+								<li class="list-group-item">Playlist 2</li>
+								<li class="list-group-item">Playlist 3</li>
+								<li class="list-group-item">Playlist 4</li>
+							</ul>
+						</body>
+					</div>
+				</div>
+
+				<div class="card gedf-card your-statistics">
+					<div class="card-body">
+						<h1>Your Statistics</h1>
+						<body>	
+							<ul class="list-group">
+								<li class="list-group-item">Stats 1</li>
+								<li class="list-group-item">Stats 2</li>
+								<li class="list-group-item">Stats 3</li>
+								<li class="list-group-item">Stats 4</li>
+							</ul>
+						</body>
+					</div>
+				</div>
+
+			
 			</div>
 
 			
