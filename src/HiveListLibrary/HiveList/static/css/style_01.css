@@ -1,0 +1,54 @@
+.navbar {
+	color: green;
+	background-color: #ffa64d;
+}
+
+
+.gedf-wrapper {
+            margin-top: 1rem;
+
+
+        }
+
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 4rem;
+                padding-right: 4rem;
+                min-height: 100vh;
+            }
+            .gedf-card {
+                margin-bottom: 2.77rem;
+                
+            }
+
+            .playlist-card{
+            	min-height: 100vh;
+            }
+        }
+
+html, body
+	{
+    	min-height: 100vh;
+	}
+
+.h1{
+	text-align: center;
+	padding-left: 5em;
+}
+
+.nav-item{
+	color: black;
+}
+
+.header img {
+	float: left;
+	width: 100px;
+	height: 100px;
+	background: #555;
+}
+
+.header h1 {
+	position: relative;
+	top: 18px;
+	left 10px;
+}
