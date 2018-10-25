@@ -9,8 +9,9 @@ class Playlist(models.Model):
     """
     playlist_id = models.IntegerField(max_length=100, primary_key=True)
     playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
-    playlist_creation_date = models.DateField()
     playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
+    playlist_creation_date = models.DateField()
+    playlist_contributors = models.ManyToManyField(Contributor, help_text="Select a contributor for this playlist")
 
     def __str__(self):
         """
@@ -24,7 +25,6 @@ class Contributor(models.Model):
     """
     Model representing a Contributor
     """
-    pass
 
     def __str__(self):
         """
@@ -38,7 +38,6 @@ class Artist(models.Model):
     """
     Model representing a Song
     """
-    pass
 
     def __str__(self):
         """
@@ -52,7 +51,6 @@ class Song(models.Model):
     """
     Model representing a Song
     """
-    pass
 
     def __str__(self):
         """
@@ -66,7 +64,6 @@ class Genre(models.Model):
     """
     Model representing a Song
     """
-    pass
 
     def __str__(self):
         """
@@ -78,9 +75,8 @@ class Genre(models.Model):
 
 class SongInstance(models.Model):
     """
-    Model representing a Song
+    Model representing a Song Instance
     """
-    pass
 
     def __str__(self):
         """
@@ -92,9 +88,8 @@ class SongInstance(models.Model):
 
 class VoteInstance(models.Model):
     """
-    Model representing a Song
+    Model representing a Vote Instance
     """
-    pass
 
     def __str__(self):
         """
