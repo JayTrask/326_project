@@ -1,56 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends "base_generic.html" %}
 
-<head>
-	
-	<link rel="stylesheet" href="/style_01.css">
+{% block content %}
 
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous">
-        
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-	
-	<title>HiveList</title>
-
-	<link rel="shortcut icon" href="Logo.png"/>
-
-</head>
-
-<body>
-
-	<nav class="navbar navbar-light ">
-        <a href="index.html" class="navbar-brand"><h1><img src="Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
-
-        <ul class="nav justify-content-center">
-
-  			<li class="nav-item">
-   				<a class="nav-link nav-item" href="Home.html">Home</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="Explore.html">Explore</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="profile.html">Profile</a>
-  			</li>
-
-		</ul>
-
-    </nav>
 	<!-- Beginning of Page -->
 	<div class="container-fluid gedf-wrapper">
 	
@@ -63,7 +14,7 @@
 						<!-- General Settings -->
 						<div class="ps-general">
 							<h1>General Settings</h1>
-							<body>
+							
 							<table class="table table-striped">
 							<form>
 							<tr><td>Playlist Name: <input type="text" name="playlistname" style="width: 200px;">
@@ -71,7 +22,7 @@
 							</tr></td>
 							<tr><td><p>Playlist Description:</P>
 							<form>
-							<textarea name="playlist-description" rows="4" cols="40">This area will contain a description about the playlist</textarea>
+							<textarea name="playlist-description" rows="4" cols="40">{{ playlist.description }}</textarea>
 							</form>
 							</tr></td>
 							<tr><td><p>Playlist Access:</p>
@@ -81,7 +32,7 @@
 							</form>
 							</tr></td>
 							</table>
-							</body>
+							
 						</div>
 					</div>
 					<div style="text-align: center;">
@@ -97,13 +48,13 @@
 				<div class="card gedf-card voting-settings">
 					<div class="card-body">
 						<h1>Voting Settings</h1>
-						<body>
+						
 						<table class="table table-striped">
 							<form>
-							<tr><td>Vote Period (Minutes): <input type="text" name="votingperiod" style="width: 50px;"></td></tr>
-							<tr><td>Vote Threshold (Votes Needed): <input type="text" name="votingthreshold" style="width: 50px;"></td></tr>
+							<tr><td>Vote Period: {{ date_field }} </td></tr>
+							<tr><td>Vote Threshold: {{ threshold_field }}</td></tr>
 							</form>
-							</body>
+							
 						</table>
 					</div>
 				</div>
@@ -111,13 +62,13 @@
 				<div class="card gedf-card voting-settings">
 					<div class="card-body">
 						<h1>Contributor Settings</h1>
-						<body>
+						
 						<table class="table table-striped">
 							<form>
 							<tr><td>Add Contributor: <input type="text" name="votingperiod" style="width: 50px;"></td></tr>
 							<tr><td>Search Contributors: <input type="text" name="votingthreshold" style="width: 50px;"></td></tr>
 							</form>
-							</body>
+							
 						</table>
 					</div>
 				</div>
@@ -125,4 +76,5 @@
 			
 		</div>
 	</div>
-</html>
+
+{% endblock %}

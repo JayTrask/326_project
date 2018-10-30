@@ -1,56 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends "base_generic.html" %}
 
-<head>
-	
-	<link rel="stylesheet" href="/style_01.css">
-
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous">
-        
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-	
-	<title>HiveList</title>
-
-	<link rel="shortcut icon" href="Logo.png"/>
-
-</head>
-
-<body>
-
-	<nav class="navbar navbar-light ">
-        <a href="#" class="navbar-brand"><h1><img src="Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
-
-        <ul class="nav justify-content-center">
-
-  			<li class="nav-item">
-   				<a class="nav-link nav-item" href="Home.html">Home</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="Explore.html">Explore</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="profile.html">Profile</a>
-  			</li>
-
-		</ul>
-
-    </nav>
+{% block content %}
 
 	 <div class="container-fluid gedf-wrapper">
 
@@ -63,18 +13,9 @@
 						<!-- Link to playlist settings -->
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Playlist name</th><th>Owner</th><th>Closing Date</th></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Summer Hits</a></td><td>Billy</td><td class="vote">1 Day</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Winter Hits</a></td><td>Bob</td><td class="vote">10 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Sad Songs</a></td><td>Jay</td><td class="vote">10 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
-	 						<tr><td class="songName"><a href="currentPlaylist.html">Birthday party</a></td><td>Emily</td><td class="vote">12 Days</td></tr>
+	 						{% for playlist in My_IP_Playlists %}
+	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.name }}</a></td><td>{{ playlist.creator }}</td><td class="vote">{{ playlist.voteTime }}</td></tr>
+	 						{% endfor %}
 	 					</table>
 	 				</div>
 	 			</div>
@@ -88,19 +29,9 @@
 						<!-- Link to playlist settings -->
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Export to Spotify</th></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-	 						<tr><td class="songName">Sad Songs for Sad Bois</td><td>Billy</td><td class="vote">Export</td></tr>
-
+	 						{% for playlist in My_Finished_Playlists %}
+	 						<tr><td class="playlistName"><a href="currentPlaylist.html">{{ playlist.name }}</a></td><td>{{ playlist.creator }}</td><td class="vote">{{ playlist.export }}</td></tr>
+	 						{% endfor %}
 	 					</table>
 	 				</div>
 	 			</div>
@@ -109,9 +40,5 @@
 
 		</div>
 	</div>
-
-</body>
-
-</html>
-
+{% endblock %}
                     

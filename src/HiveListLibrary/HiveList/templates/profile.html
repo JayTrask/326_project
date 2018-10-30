@@ -1,54 +1,6 @@
-<!DOCTYPE html>
+{% extends "base_generic.html" %}
 
-<html>
-	<head>
-   	<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-	<link rel="stylesheet" href="/style_01.css">
-
-	<title>HiveList</title>
-
-	<link rel="shortcut icon" href="Logo.png"/>
-	
-	</head>
-
-	<nav class="navbar navbar-light ">
-	
-		<a href="#" class="navbar-brand"><h1><img src="Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
-	
-        	<ul class="nav justify-content-center">
-	
-  			<li class="nav-item">
-   				<a class="nav-link nav-item" href="Home.html">Home</a>
-  	
-			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="Explore.html">Explore</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="profile.html">Profile</a>
-  			</li>
-
-		</ul>
-
-    	</nav>
-
-	<body>
-	
-		
+{% block content %}
 	<!-- Beginning of Page -->
 	<div class="container-fluid gedf-wrapper">
 	
@@ -91,9 +43,7 @@
 						<h1>Profile Overview</h1>
 						<div class="card gedf-card">
 	 						<div class="card-body">
-	 							<h2><img src="exampleProfile.png" width="50" height="50" class="logo"> Billy</h2>
-	 							<p class="contrNum">Joined September 2018<br>16 Contributions<br>Created 2 Playlists<br>Joined 5 Playlists</p> <!-- contrNum = # number of contributions -->
-
+	 							{{ profile_overview }}
 
 	 						</div>
 	 					</div>
@@ -103,16 +53,16 @@
 				<div class = "card gedf-card user-settings">
 					<div class="card-body">
 						<h1>User Settings</h1>
-						<body>	
+							
 							<br>
-							<h4>Email Addresses:</h4>
+							<h4>Email Address:</h4>
 							<table class="table table-striped">
-        						<tr><td> Email 1</td><td>Remove</td></tr>
-        						<tr><td> Email 2</td><td>Remove</td></tr>
+        						<tr><td>{{ user_email }}</td></tr>
+        						
 							<br>
 							</table>
-							<tr><td>Add email address: <input type="text" name="email address" style="width: 200px;"></tr></td>
-							<button type="button" onclick="alert('Email added (need to add functionality).')" style="height:30px;width:120px">Add</button>
+							<tr><td>Change email address: <input type="text" name="email address" style="width: 200px;"></tr></td>
+							<button type="button" onclick="alert('Email Changed.')" style="height:30px;width:120px">Add</button>
 							<br>
 							<h4>Change Password:</h4>
 							<br>
@@ -136,7 +86,7 @@
 								<input type="radio" name="Access" value="anon_priv"> Anonymous for all
 								<br>
 							</form>
-						</body>
+						
 					</div>
 				</div>
 			</div>
@@ -160,28 +110,17 @@
 				<div class="card gedf-card your-suggestions">
 					<div class="card-body">
 						<h2>Your Suggestions</h2>
-						<body>	
-							<ul class="list-group">
-								<li class="list-group-item">Playlist 1</li>
-								<li class="list-group-item">Playlist 2</li>
-								<li class="list-group-item">Playlist 3</li>
-								<li class="list-group-item">Playlist 4</li>
-							</ul>
-						</body>
+						
+							{{ playlist_suggestions }}
+						
 					</div>
 				</div>
 
 				<div class="card gedf-card your-statistics">
 					<div class="card-body">
 						<h1>Your Statistics</h1>
-						<body>	
-							<ul class="list-group">
-								<li class="list-group-item">Stats 1</li>
-								<li class="list-group-item">Stats 2</li>
-								<li class="list-group-item">Stats 3</li>
-								<li class="list-group-item">Stats 4</li>
-							</ul>
-						</body>
+
+							{{ user_statistics }}
 					</div>
 				</div>
 
@@ -191,8 +130,4 @@
 			
 		</div>
 	</div>
-	
-	</body>
-
-
-</html>
+{% endblock %}

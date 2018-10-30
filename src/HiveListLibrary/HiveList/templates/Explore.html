@@ -1,56 +1,6 @@
-<html>
+{% extends "base_generic.html" %}
 
-<head>
-	
-	<link rel="stylesheet" href="style_01.css">
-
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous">
-        
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-
-	<title>HiveList</title>
-
-	<link rel="shortcut icon" type="image/png" href="/Logo.png"/>
-
-</head>
-
-<body>
-
-	<nav class="navbar navbar-light ">
-        <a href="#" class="navbar-brand"><h1><img src="Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
-
-        <ul class="nav justify-content-center">
-
-  			<li class="nav-item">
-   				<a class="nav-link nav-item" href="Home.html">Home</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="Explore.html">Explore</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
-  			</li>
-
-  			<li class="nav-item">
-    			<a class="nav-link nav-item" href="profile.html">Profile</a>
-  			</li>
-
-		</ul>
-
-    </nav>
+{% block content %}
     		<div class="container-fluid gedf-wrapper">
 			<div class="row">
 				<div class="col-md-4">
@@ -59,9 +9,10 @@
 							<h1>Popular Playlists</h1>
 								<table class="table table-striped">
 									<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Listeners</th></tr>
-									<tr><td class="playlistName">Summer Hits</td><td>Bob</td><td>1923</td></tr>
-									<tr><td class="playlistName">Best of Weird Al Yankovic</td><td>Al</td><td>28980</td></tr>
-									<tr><td class="playlistName">Party Hits</td><td>Fred</td><td>19210</td></tr>
+									{% for playlist in popular_playlists %}
+									<tr><td class="playlistName">{{ playlist.name }}</td><td>{{ playlist.creator }}</td><td>{{ playlist.listeners }}</td></tr>
+									{% endfor %}
+									<!-- note: we can decide listeners by # of exports -->
 								</table>
 						</div>
 					</div>
@@ -73,9 +24,9 @@
  							<h1>Popular Songs</h1>
  								<table class="table table-striped">
 									<tr scope="row"><th>Song Name</th><th>Artist</th><th># of Playlists Featured</th></tr>
-				 					<tr><td class="songName">Baby</td><td>J-Beibs</td><td class="vote">-7</td></tr>
-				 					<tr><td class="songName">Livin' in the Fridge</td><td>Weird Al Yankovic</td><td class="vote">98234</td></tr>
-				 					<tr><td class="songName">White and Nerdy</td><td>Weird Al Yankovic</td><td class="vote">1234</td></tr>
+				 					{% for song in popular_songs %}
+									<tr><td class="songName">{{ song.name }}</td><td>{{ song.artist }}</td><td>{{ song.playlists }}</td></tr>
+									{% endfor %}
 				 				</table>
 	 					</div>
 			 		</div>
@@ -88,8 +39,10 @@
 		 					<h1>Filters</h1>
 								<table class="table table-hover">
 									<tr scope="row"><th>Genre</th></tr>
-									<tr><td class="genre">Country</td></tr>
-									<tr><td class="genre">Pop</td></tr>
+									{% for genre in genres %}
+									<tr><td class="genre">{{ genre.name }}</td></tr>
+									{% endfor %}
+									
 								</table>
 			 			</div>
 	 				</div>
@@ -97,7 +50,5 @@
 			</div>
 		</div>
 
-</body>
-
-</html>
+{% endblock %}
 
