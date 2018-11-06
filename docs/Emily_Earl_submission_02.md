@@ -1,0 +1,5 @@
+Initially I worked on the data model. I had a good understanding of how we made the one in class and also how the one from our website would relate to the example one. From that starting point I was able to add the other models to it that we needed for our own model. 
+
+Code-wise, I helped debug our beginning models.py files to eliminate errors even before we had a working init.py file. When we were still having errors even when init.py was funcitonal, I worked with Caleb to test out our website and at least have one page working. The Test: 5 on our index page was our first test, and we decided to leave that on the page for a while just as proof that we had it working. By having that basis, we were able to grow from that and Caleb added the rest of the models in after that. 
+
+Nearing the end of the project, I worked on making the page more legible. I edited some of our html files as well as the init.py to get data that could be presented nicely. Now everything fits on our page. Lastly, I added to the team write-up to assist Olivia, and then helped refine the script for our ending video. 
