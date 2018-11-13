@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <title>HiveList</title>
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css/style_01.css' %}">
+      <link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+  </head>
+
+  <nav class="navbar navbar-light ">
+        <a href="#" class="navbar-brand"><h1><img src="../static/images/Logo.png" width="50" height="50" class="logo">HiveList</h1></a>
+
+        <ul class="nav justify-content-center">
+
+        <li class="nav-item">
+        <!--  <a class="nav-link nav-item" href="/Home.html">Home</a>-->
+        </li>
+
+        <li class="nav-item">
+        <!--<a class="nav-link nav-item" href="#">Explore</a>-->
+        </li>
+
+        <li class="nav-item">
+        <!--<a class="nav-link nav-item" href="myLists.html">My Lists</a>-->
+        </li>
+
+        <li class="nav-item">
+        <!--<a class="nav-link nav-item" href="profile.html">Profile</a>-->
+        </li>
+
+    </ul>
+
+    </nav>
+
+
+  <body>
+
+  <!---StartOfMainDiv---> 
+  <div class="container-fluid">
+
+    <h1 align="center">Welcome to HiveList</h1>
+        {% block content %}
+        <p>Test 1: {{test}}</p>
+        {% endblock %}
+    
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 col-centered">
+      <div class="card gedf-card ps-body">
+        <div class="card-body">
+          <!---Description of HiveList-->
+          <div class="ps-general">
+            <body><p>
+              Put your playlist-making hobby to good use. Make playlists with your friends, vote on which songs you want added, and explore public playlists to become 
+              part of a brand new platform for playlist creation!<br><br><br><h4>Login or Create an Account to enter HiveList below.</h4></p>
+            </body>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+
+
+
+    <!---RowForBUttons--->
+    <div class="row">
+
+      <!---loginButton--->
+      <div class="col-md-6 text-center">
+        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#loginPopUp">log In</button>
+      </div>
+
+
+      <!---makeAccountButton--->
+      <div class="col-md-6 text-center">
+        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#newAccountPopUp">Make New Account</button>
+      </div>
+
+    </div>
+
+    <!---loginPopup--->
+    <div class="modal fade" id="loginPopUp">
+    
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!---header--->
+          <div class="modal-header">
+          
+            <h3 class="modal-title">Log In</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          </div>
+          <!---body--->
+          <div class="modal-body">
+            {% if form.errors %}
+              <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
+
+            {% if next %}
+              {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+              {% else %}
+                <p>Please login to see this page.</p>
+              {% endif %}
+            {% endif %}
+
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div>
+              <td>{{ form.username.label_tag }}</td>
+              <td>{{ form.username }}</td>
+            </div>
+            <div>
+              <td>{{ form.password.label_tag }}</td>
+              <td>{{ form.password }}</td>
+            </div>
+
+            <div>
+              <input type="submit" value="login" />
+              <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+            </form>
+
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+
+          </div>
+          <!---footer--->
+          <div class="modal-footer">
+          
+            <a href="home/"><button class="btn btn-primary btn-block">Log in</button></a>
+          
+          </div>
+
+        </div>
+
+      </div>
+    
+    </div>
+
+
+
+    <!---newAccountPopUp--->
+    <div class="modal fade" id="newAccountPopUp">
+    
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!---header--->
+          <div class="modal-header">
+          
+            <h3 class="modal-title">New Account</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          </div>
+          <!---body--->
+          <div class="modal-body">
+          
+            <form role="form">
+            
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="email">
+              </div>
+            
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="password">
+              </div>
+            </form>
+
+          </div>
+          <!---footer--->
+          <div class="modal-footer">
+          
+            <a href="home/"><button class="btn btn-primary btn-block">Make Account</button></a>
+          
+          </div>
+
+        </div>
+
+      </div>
+    
+    </div>
+  <!---endOfMainDiv--->
+  </div>
+  </body>
+</html>
