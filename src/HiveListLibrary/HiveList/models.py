@@ -18,7 +18,7 @@ class Playlist(models.Model):
     )
     playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
     #User needs to be implemented before foreignKey to user can be used
-    #playlist_creator_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    playlist_creator_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     playlist_creation_date = models.DateField(auto_now_add=True, blank=True)
     playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
     #playlist_vote_time = models.DateTimeField(null=True, blank=True)
