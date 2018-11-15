@@ -73,126 +73,42 @@
     <!---RowForBUttons--->
     <div class="row">
 
-      <!---loginButton--->
-      <div class="col-md-6 text-center">
-        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#loginPopUp">log In</button>
+      {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+
+      {% if next %}
+        {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+        {% else %}
+          <p>Please login to see this page.</p>
+        {% endif %}
+      {% endif %}
+
+      <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+
+      <div>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </div>
+      <div>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
       </div>
 
-
-      <!---makeAccountButton--->
-      <div class="col-md-6 text-center">
-        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#newAccountPopUp">Make New Account</button>
+      <div>
+        <input type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
       </div>
+      </form>
+
+      {# Assumes you setup the password_reset view in your URLconf #}
+      <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
     </div>
 
-    <!---loginPopup--->
-    <div class="modal fade" id="loginPopUp">
-    
-      <div class="modal-dialog">
-        <div class="modal-content">
 
-          <!---header--->
-          <div class="modal-header">
-          
-            <h3 class="modal-title">Log In</h3>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-          </div>
-          <!---body--->
-          <div class="modal-body">
-            {% if form.errors %}
-              <p>Your username and password didn't match. Please try again.</p>
-            {% endif %}
-
-            {% if next %}
-              {% if user.is_authenticated %}
-                <p>Your account doesn't have access to this page. To proceed,
-                please login with an account that has access.</p>
-              {% else %}
-                <p>Please login to see this page.</p>
-              {% endif %}
-            {% endif %}
-
-            <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-
-            <div>
-              <td>{{ form.username.label_tag }}</td>
-              <td>{{ form.username }}</td>
-            </div>
-            <div>
-              <td>{{ form.password.label_tag }}</td>
-              <td>{{ form.password }}</td>
-            </div>
-
-            <div>
-              <input type="submit" value="login" />
-              <input type="hidden" name="next" value="{{ next }}" />
-            </div>
-            </form>
-
-            {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
-
-          </div>
-          <!---footer--->
-          <div class="modal-footer">
-          
-            <a href="home/"><button class="btn btn-primary btn-block">Log in</button></a>
-          
-          </div>
-
-        </div>
-
-      </div>
-    
-    </div>
-
-
-
-    <!---newAccountPopUp--->
-    <div class="modal fade" id="newAccountPopUp">
-    
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!---header--->
-          <div class="modal-header">
-          
-            <h3 class="modal-title">New Account</h3>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-          </div>
-          <!---body--->
-          <div class="modal-body">
-          
-            <form role="form">
-            
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="email">
-              </div>
-            
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="password">
-              </div>
-            </form>
-
-          </div>
-          <!---footer--->
-          <div class="modal-footer">
-          
-            <a href="home/"><button class="btn btn-primary btn-block">Make Account</button></a>
-          
-          </div>
-
-        </div>
-
-      </div>
-    
-    </div>
-  <!---endOfMainDiv--->
-  </div>
   </body>
 </html>
