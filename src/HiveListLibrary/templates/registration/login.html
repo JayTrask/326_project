@@ -45,35 +45,16 @@
   <div class="container-fluid">
 
     <h1 align="center">Welcome to HiveList</h1>
-        {% block content %}
-        <p>Test 1: {{test}}</p>
-        {% endblock %}
+
     
     <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 col-centered">
       <div class="card gedf-card ps-body">
-        <div class="card-body">
+        <div class="card-body"><center>
           <!---Description of HiveList-->
           <div class="ps-general">
-            <body><p>
-              Put your playlist-making hobby to good use. Make playlists with your friends, vote on which songs you want added, and explore public playlists to become 
-              part of a brand new platform for playlist creation!<br><br><br><h4>Login or Create an Account to enter HiveList below.</h4></p>
-            </body>
-          </div>
-        </div>
-        <br>
-      </div>
-    </div>
-    <div class="col-md-3"></div>
-    </div>
-
-
-
-    <!---RowForBUttons--->
-    <div class="row">
-
-      {% if form.errors %}
+            {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
       {% endif %}
 
@@ -107,7 +88,18 @@
       {# Assumes you setup the password_reset view in your URLconf #}
       <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
+          </div>
+        </center>
+        </div>
+        <br>
+      </div>
     </div>
+    <div class="col-md-3"></div>
+    </div>
+
+
+
+
 
 
   </body>
