@@ -135,3 +135,47 @@ $ python3 manage.py runserver 0.0.0.0:8080
 ====================================================================
 """
 print(message)
+
+# NEW 17
+#ct = ContentType.objects.get_for_model(Playlist)
+#permission = Permission.objects.get(
+            #codename="can_mark_returned", name="Set book as returned", content_type=ct
+            #)
+  
+
+# Create and add users
+users = []
+print("Generated users:")
+for a in artists:
+    username = a.artist_name.lower()[0] + a.artist_name.lower()
+    email = f"{username}@326.edu"
+    password = a.artist_name
+    user = User.objects.create_user(username, email, password)
+    user.name = a.artist_name
+    #user.last_name = a.last_name
+    #user.user_permissions.add(permission)
+    user.save()
+    users.append(user)
+    print(f"  username: {username}, password: {password}")
+
+print("\nUsers who have a book on loan:")
+for i in range(0, 20):
+    a_playlist = playlists[fake.random_int(0, len(playlists)) - 1]
+    a_user = users[fake.random_int(0, len(users)) - 1]
+    a_playlist.playlist_creator_id = a_user
+    a_playlist.save()
+    print(f"  {a_user.username}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
