@@ -158,7 +158,7 @@ for a in artists:
     users.append(user)
     print(f"  username: {username}, password: {password}")
 
-print("\nUsers who have a book on loan:")
+print("\nUsers who have a playlist:")
 for i in range(0, 20):
     a_playlist = playlists[fake.random_int(0, len(playlists)) - 1]
     a_user = users[fake.random_int(0, len(users)) - 1]
