@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
-from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
+from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance\
+
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -13,7 +15,7 @@ def index(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def currentPlaylist(request):
     playlist = Playlist.objects.order_by("?").first()
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
@@ -25,7 +27,7 @@ def currentPlaylist(request):
     }
     return render(request, "currentPlaylist.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def Explore(request):
     playlists = Playlist.objects.all()[:10]
     playlist_ids = Playlist.objects.all()[:10].values('playlist_id')
@@ -57,7 +59,7 @@ def Home(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Home.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def myLists(request):
     IP_playlists = Playlist.objects.all()[:10]
     My_playlists = Playlist.objects.all()[11:21]
@@ -69,7 +71,7 @@ def myLists(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "myLists.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def playlistSettings(request):
     playlist = Playlist.objects.order_by("?").first()
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).count()
@@ -82,7 +84,7 @@ def playlistSettings(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "playlistSettings.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     playlist = Playlist.objects.order_by("?").first()
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
