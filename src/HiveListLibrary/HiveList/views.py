@@ -3,6 +3,7 @@ from django.shortcuts import render
 from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance\
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -86,11 +87,11 @@ def playlistSettings(request):
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    playlist = Playlist.objects.order_by("?").first()
-    all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
-    all_songs = Song.objects.filter(song_id__in=all_songInstances)
+    userPlaylists = Playlist.objects.filter(playlist_creator_id=request.user)
+    #all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
+    #all_songs = Song.objects.filter(song_id__in=all_songInstances)
     context = {
-        "songs": all_songs,
+        "playlists": userPlaylists,
     }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)

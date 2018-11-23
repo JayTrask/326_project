@@ -13,20 +13,12 @@
 						<!---contributions-->
 						<div class="ps-general">
 							<h2>Your Contributions</h2>
-								<table class="table table-hover">
-									<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Date Added</th></tr>
-							{% for song in songs %}
-							<tr><td class="songName">{{ song.title }}</td><td>{{ song.artist }}</td><td class="vote">Oct 1 2018</td></tr>
-	 					
-							{% endfor %}
-						</table>
 	 					<table class="table table-hover">
 								<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Date Added</th></tr>
-	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
-	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
-	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
-	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
-	 						<tr><td class="songName">Song Name</td><td>artist</td><td class="vote">Oct 1 2018</td></tr>
+								{% for playlist in playlists %}
+								<tr><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creator_id }}</td><td>{{ playlist.playlist_creation_date }}</td></tr>
+								{% endfor %}
+	 						<tr><td class="songName">Song Name</td><td>artist</td></tr>
 	 					</table>
 						</div>
 					</div>
