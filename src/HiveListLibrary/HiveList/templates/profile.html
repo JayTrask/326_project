@@ -33,7 +33,8 @@
 						<h2>Profile Overview</h2>
 						<div class="card gedf-card">
 	 						<div class="card-body">
-	 							{{ profile_overview }}
+								<p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+							<p>Number of playlists: {{ playlistCount }}</p>
 	 						</div>
 	 					</div>
 					</div>
@@ -43,9 +44,8 @@
 					<div class="card-body">
 						<h2>User Settings</h2>
 							<br>
-							<h4>Email Address:</h4>
+							<h4>Email Address: {{ user.email }}</h4>
 							<table class="table table-striped">
-        						<tr><td>{{ user_email }}</td></tr>
                                 <tr><td>Change Email Address: <input type="text" name="email address" style="width: 200px;"></td></tr>
 							</table>
                                 <button type="button" onclick="alert('Email Changed.')" style="height:30px; width:120px">Change Email</button>

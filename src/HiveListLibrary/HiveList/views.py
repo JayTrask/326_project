@@ -87,11 +87,15 @@ def playlistSettings(request):
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    userPlaylists = Playlist.objects.filter(playlist_creator_id=request.user)
+    loggedInUser = request.user
+    userPlaylists = Playlist.objects.filter(playlist_creator_id=loggedInUser)
+    count = userPlaylists.count()
     #all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     #all_songs = Song.objects.filter(song_id__in=all_songInstances)
     context = {
         "playlists": userPlaylists,
+        "user" : loggedInUser,
+        "playlistCount" : count,
     }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)

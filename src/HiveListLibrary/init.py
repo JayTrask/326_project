@@ -153,7 +153,8 @@ for a in range(0, 50):
     email = f"{username}@326.edu"
     password = lastName
     user = User.objects.create_user(username, email, password)
-    user.name = firstName + " " + lastName
+    user.first_name = firstName
+    user.last_name = lastName
     #user.last_name = a.last_name
     #user.user_permissions.add(permission)
     user.save()
