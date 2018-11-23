@@ -146,12 +146,14 @@ print(message)
 # Create and add users
 users = []
 print("Generated users:")
-for a in artists:
-    username = a.artist_name.lower()[0] + a.artist_name.lower()
+for a in range(0, 50):
+    firstName = fake.first_name()
+    lastName = fake.last_name()
+    username = firstName.lower()[0] + lastName.lower()
     email = f"{username}@326.edu"
-    password = a.artist_name
+    password = lastName
     user = User.objects.create_user(username, email, password)
-    user.name = a.artist_name
+    user.name = firstName + " " + lastName
     #user.last_name = a.last_name
     #user.user_permissions.add(permission)
     user.save()
@@ -159,7 +161,7 @@ for a in artists:
     print(f"  username: {username}, password: {password}")
 
 print("\nUsers who have a playlist:")
-for i in range(0, 20):
+for i in range(0, 5):
     a_playlist = playlists[fake.random_int(0, len(playlists)) - 1]
     a_user = users[fake.random_int(0, len(users)) - 1]
     a_playlist.playlist_creator_id = a_user
