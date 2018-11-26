@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<!---test comment--->
+<!DOCTYPE HTML>
+<!---LoginPage--->
+<html>
 	<head>
-	<title>HiveList</title>
    	<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    	{% load static %}
-    	<link rel="stylesheet" href="{% static 'css/style_01.css' %}">
-    	<link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+
+	<link rel="stylesheet" href="/style_01.css">
+
+	<title>HiveList</title>
+
+	<link rel="shortcut icon" href="Logo.png"/>
+	
 	</head>
 
 	<nav class="navbar navbar-light ">
-        <a href="#" class="navbar-brand"><h1><img src="../static/images/Logo.png" width="50" height="50" class="logo">HiveList</h1></a>
+        <a href="#" class="navbar-brand"><h1><img src="Logo.png" width="50" height="50" class="logo">HiveList</h2></a>
 
         <ul class="nav justify-content-center">
 
   			<li class="nav-item">
-				<!--	<a class="nav-link nav-item" href="/Home.html">Home</a>-->
+   				<a class="nav-link nav-item" href="/Home.html">Home</a>
   			</li>
 
   			<li class="nav-item">
-				<!--<a class="nav-link nav-item" href="#">Explore</a>-->
+    			<a class="nav-link nav-item" href="#">Explore</a>
   			</li>
 
   			<li class="nav-item">
-				<!--<a class="nav-link nav-item" href="myLists.html">My Lists</a>-->
+    			<a class="nav-link nav-item" href="myLists.html">My Lists</a>
   			</li>
 
   			<li class="nav-item">
-				<!--<a class="nav-link nav-item" href="profile.html">Profile</a>-->
+    			<a class="nav-link nav-item" href="profile.html">Profile</a>
   			</li>
 
 		</ul>
@@ -45,9 +54,7 @@
 	<div class="container-fluid">
 
 		<h1 align="center">Welcome to HiveList</h1>
-        {% block content %}
-        <p>Test 1: {{test}}</p>
-        {% endblock %}
+
 		
 		<div class="row">
 		<div class="col-md-3"></div>
@@ -73,42 +80,20 @@
 		<!---RowForBUttons--->
 		<div class="row">
 
-			{% if form.errors %}
-			  <p>Your username and password didn't match. Please try again.</p>
-			{% endif %}
-
-			{% if next %}
-			  {% if user.is_authenticated %}
-			    <p>Your account doesn't have access to this page. To proceed,
-			    please login with an account that has access.</p>
-			  {% else %}
-			    <p>Please login to see this page.</p>
-			  {% endif %}
-			{% endif %}
-
-			<form method="post" action="{% url 'login' %}">
-			{% csrf_token %}
-
-			<div>
-			  <td>{{ form.username.label_tag }}</td>
-			  <td>{{ form.username }}</td>
-			</div>
-			<div>
-			  <td>{{ form.password.label_tag }}</td>
-			  <td>{{ form.password }}</td>
+			<!---loginButton--->
+			<div class="col-md-6 text-center">
+				<a button type="button" class="btn btn-success btn-block" href="{% url 'login' %}">log In</a>
 			</div>
 
-			<div>
-			  <input type="submit" value="login" />
-			  <input type="hidden" name="next" value="{{ next }}" />
-			</div>
-			</form>
 
-			{# Assumes you setup the password_reset view in your URLconf #}
-			<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+			<!---makeAccountButton--->
+			<div class="col-md-6 text-center">
+				<button type="button" class="btn btn-success btn-block" href="/admin-url">Make New Account</button>
+			</div>
 
 		</div>
 
-
+	<!---endOfMainDiv--->
+	</div>
 	</body>
 </html>

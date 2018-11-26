@@ -1,6 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
+from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance\
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 
 # Create your views here.
@@ -13,7 +18,7 @@ def index(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def currentPlaylist(request):
     playlist = Playlist.objects.order_by("?").first()
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
@@ -25,7 +30,7 @@ def currentPlaylist(request):
     }
     return render(request, "currentPlaylist.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def Explore(request):
     playlists = Playlist.objects.all()[:10]
     playlist_ids = Playlist.objects.all()[:10].values('playlist_id')
@@ -57,7 +62,7 @@ def Home(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Home.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def myLists(request):
     IP_playlists = Playlist.objects.all()[:10]
     My_playlists = Playlist.objects.all()[11:21]
@@ -69,7 +74,7 @@ def myLists(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "myLists.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def playlistSettings(request):
     playlist = Playlist.objects.order_by("?").first()
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).count()
@@ -82,13 +87,29 @@ def playlistSettings(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "playlistSettings.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
-    playlist = Playlist.objects.order_by("?").first()
-    all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
-    all_songs = Song.objects.filter(song_id__in=all_songInstances)
+    loggedInUser = request.user
+    userPlaylists = Playlist.objects.filter(playlist_creator_id=loggedInUser)
+    count = userPlaylists.count()
+    #all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
+    #all_songs = Song.objects.filter(song_id__in=all_songInstances)
+    if request.method == "POST":
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('/profile.html/')
+
+    else:
+        form = PasswordChangeForm(user=request.user)
+
     context = {
-        "songs": all_songs,
+        "playlists": userPlaylists,
+        "user" : loggedInUser,
+        "playlistCount" : count,
+        "form" : form,
     }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)
