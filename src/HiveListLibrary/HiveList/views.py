@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 
 
 # Create your views here.
@@ -100,7 +101,9 @@ def profile(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/profile.html/')
+            return redirect('/profile')
+        else:
+            messages.error(request, "Please correct the error shown below")
 
     else:
         form = PasswordChangeForm(user=request.user)
