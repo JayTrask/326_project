@@ -55,15 +55,10 @@
 							<br>
 							<form method="Post">
 							{% csrf_token %}
-							<tr><td>{{ form.as_p }}</td></tr>
-							</form>
-								<p></p>
-								<tr><td>New Password: <input type="text" name="new_pass" style="width: 200px;"></tr></td>
-								<p></p>
-								<tr><td>Confirm New Password: <input type="text" name="confirm_pass" style="width: 200px;"></tr></td>
+							{{ form.as_p }}
+							<button type="submit">Submit</button>
+							</form>	
 						
-									<br><br>
-									<button type="button" onclick="alert('Password Changed.')" style="height:30px;width:200px">Change Password</button>
 							<br>
 							<br>
 							<h4>Default Privacy Settings: </h4>
