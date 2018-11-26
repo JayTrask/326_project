@@ -4,6 +4,7 @@ from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongIns
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from HiveList.forms import ProfileForm
 
 
 # Create your views here.
@@ -92,10 +93,12 @@ def profile(request):
     count = userPlaylists.count()
     #all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     #all_songs = Song.objects.filter(song_id__in=all_songInstances)
+    form = ProfileForm()
     context = {
         "playlists": userPlaylists,
         "user" : loggedInUser,
         "playlistCount" : count,
+        "form" : form,
     }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)

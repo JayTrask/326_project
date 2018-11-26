@@ -53,7 +53,10 @@
                             <br>
 							<h4>Change Password:</h4>
 							<br>
-								<tr><td>Current Password: <input type="text" name="current_pass" style="width: 200px;"></tr></td>
+							<form method="Post">
+							{% csrf_token %}
+							<tr><td>{{ form.as_p }}</td></tr>
+							</form>
 								<p></p>
 								<tr><td>New Password: <input type="text" name="new_pass" style="width: 200px;"></tr></td>
 								<p></p>
