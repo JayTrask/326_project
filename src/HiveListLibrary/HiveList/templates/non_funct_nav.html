@@ -21,24 +21,7 @@
 <body>
     {% block navbar %}
 	<nav class="navbar navbar-light ">
-        <a href={% url 'home' %} class="navbar-brand"><h1><img src="{% static 'images/Logo.png' %}" width=" 50" height="50" class="logo">HiveList</h1></a>
-        <ul class="nav justify-content-center">
-  			<li class="nav-item">
-				<a class="nav-link nav-item" href={% url 'home' %}>Home</a>
-  			</li>
-  			<li class="nav-item">
-				<a class="nav-link nav-item" href={% url 'explore' %}>Explore</a>
-  			</li>
-  			<li class="nav-item">
-				<a class="nav-link nav-item" href={% url 'mylists' %}>My Lists</a>
-  			</li>
-  			<li class="nav-item">
-				<a class="nav-link nav-item" href={% url 'profile' %}>Profile</a>
-  			</li>
-  			<li class="nav-item">
-				<a class="nav-link nav-item" href={% url 'index' %}>Log out</a>
-  			</li>
-		</ul>
+        <a href={% url 'index' %} class="navbar-brand" style="color:black;">  <h1><img src="{% static 'images/Logo.png' %}" width=" 50" height="50" class="logo">HiveList</h1></a>
     </nav>
     {% endblock %}
 

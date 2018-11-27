@@ -142,7 +142,10 @@ def playlist_create(request):
     if request.method == 'POST':
         form = PlaylistCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            fs = form.save(commit=False)
+            fs.playlist_creator_id = request.user
+            fs.save()
+
 
             return redirect('/HiveList/mylists')
 
