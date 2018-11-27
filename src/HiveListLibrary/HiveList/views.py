@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
-from HiveList.forms import SignUpForm
+from HiveList.forms import SignUpForm, PlaylistCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
@@ -132,3 +132,23 @@ def signup(request):
     else:
         form = SignUpForm()   
     return render(request, 'registration_form.html', {'form': form})
+
+
+def playlist_create(request):
+    if request.method == 'POST':
+        form = PlaylistCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return redirect('/HiveList/mylists')
+
+    else:
+        form = PlaylistCreationForm()
+
+    context = {
+       'form': form
+    }
+
+    return render(request, "create_playlist.html", context)
+
+
