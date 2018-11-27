@@ -40,40 +40,39 @@
 
 
   <body>
+	 <div class="container-fluid gedf-wrapper">
 
-  <!---StartOfMainDiv---> 
-  <div class="container-fluid">
+	 	<div class="row">
 
-    <h1 align="center">Welcome to HiveList</h1>
+	 		<div class="col-md-6 gedf-main working-playlist">
+	 			<div class="card gedf-card playlist-card">
+	 				<div class="card-body">
+	 						{% block content %}
+							<h2>New Playlist</h2>
+						    	<form method="post">
+							{% csrf_token %}
+							{{ form.as_p }}
+							<button type="submit">Create</button>
+							</form>
 
-    
-    <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 col-centered">
-      <div class="card gedf-card ps-body">
-        <div class="card-body"><center>
-          <!---Description of HiveList-->
-          <div class="ps-general">
-           
-		{% block content %}
-		<h2>Sign up</h2>
-	    	<form method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Sign up</button>
-		</form>
-		{% endblock %}
+							{% endblock %}
 
-          </div>
-        </center>
-        </div>
-        <br>
-      </div>
-    </div>
-    <div class="col-md-3"></div>
-    </div>
+	 				</div>
+	 			</div>
+	 			
+	 		</div>
 
+	 		<div class="col-md-6 gedf-main working-playlist">
+	 			<div class="card gedf-card playlist-card">
+	 				<div class="card-body">
+	 					</table>
+	 				</div>
+	 			</div>
 
+	 		</div>
+
+		</div>
+	</div>
 
 
 
