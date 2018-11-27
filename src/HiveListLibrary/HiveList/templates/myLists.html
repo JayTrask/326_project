@@ -9,12 +9,17 @@
 	 		<div class="col-md-6 gedf-main working-playlist">
 	 			<div class="card gedf-card playlist-card">
 	 				<div class="card-body">
-	 					<h2>In Progress Playlists</h2>
+                        <h2>In Progress Playlists</h2><a href="/HiveList/mylists/create_playlist/">Create Playlist</a>
 						<!-- Link to playlist settings -->
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Playlist name</th><th>Creation Date</th><th>Vote Time Expiration</th><th>Ranking</th></tr>
 	 						{% for playlist in My_IP_Playlists %}
-	 						<tr><td class="playlistName"><a href={% url 'currentPlaylist' %}>{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creation_date }}</td></td><td>{{ playlist.playlist_vote_time }}</td><td class="vote">{{ playlist.playlist_ranking }}</td></tr>
+	 						<tr>
+                                <td class="playlistName"><a href="{% url 'currentPlaylist' playlist_id=playlist.playlist_id %}">{{ playlist.playlist_name }}</a></td>
+                                <td>{{ playlist.playlist_creation_date }}</td>
+                                <td>{{ playlist.playlist_vote_time }}</td>
+                                <td class="vote">{{ playlist.playlist_ranking }}</td>
+                            </tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
@@ -30,7 +35,11 @@
 	 					<table class="table table-hover">
 	 						<tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Vote Time Expiration</th><th>Ranking</th></tr>
 	 						{% for playlist in My_Finished_Playlists %}
-	 						<tr><td class="playlistName"><a href={% url 'currentPlaylist' %}>{{ playlist.playlist_name }}</a></td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_vote_time }}</td><td class="vote">{{ playlist.playlist_ranking }}</td></tr>
+	 						<tr>
+                                <td class="playlistName"><a href={% url 'currentPlaylist' playlist_id=playlist.playlist_id %}>{{ playlist.playlist_name }}</a></td>
+                                <td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_vote_time }}</td>
+                                <td class="vote">{{ playlist.playlist_ranking }}</td>
+                            </tr>
 	 						{% endfor %}
 	 					</table>
 	 				</div>
