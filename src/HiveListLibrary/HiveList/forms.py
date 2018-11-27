@@ -29,6 +29,7 @@ class PlaylistCreationForm(forms.ModelForm):
 		fields = [
 			'playlist_name',
 			'playlist_description',
+			'playlist_vote_time',
 			'playlist_votingthreshold',
 			'playlist_is_private'
 		]
