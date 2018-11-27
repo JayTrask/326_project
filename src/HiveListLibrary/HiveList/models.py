@@ -7,9 +7,8 @@ from django.urls import reverse
 
 now = datetime.datetime.now()
 
-# Create your models here.
-
 class Playlist(models.Model):
+    
     playlist_id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -32,9 +31,9 @@ class Playlist(models.Model):
 
 
 class Contributors(models.Model):
-    playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
-    contributor_id= models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     
+    playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
+    contributor_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.contributor_id
@@ -48,7 +47,6 @@ class Artist(models.Model):
         editable=False,
         help_text="Unique ID for this particular Song across entire site"
     )
-
     artist_name = models.CharField(max_length=200)
     
     def __str__(self):
@@ -80,6 +78,7 @@ class Song(models.Model):
 
 
 class SongInstance(models.Model):
+    
     song_instance_id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -94,6 +93,7 @@ class SongInstance(models.Model):
 
     def __str__(self):
         return str(self.song_instance_id)
+
 
 """
 class VoteInstance(models.Model):
@@ -110,7 +110,6 @@ class VoteInstance(models.Model):
       ('y', 'yes'),
       ('n', 'no')
       )
-
     vote = models.CharField(max_length=1, choices=VOTE_STATUS, blank=True)
 
     def __str__(self):        
