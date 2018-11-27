@@ -45,7 +45,7 @@ def Explore(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Explore.html", context=context)
 
-
+@login_required(login_url='/accounts/login/')
 def Home(request):
     # IP_playlists = pass
     loggedInUser = request.user
@@ -140,7 +140,7 @@ def signup(request):
         form = SignUpForm()   
     return render(request, 'registration_form.html', {'form': form})
 
-
+@login_required(login_url='/accounts/login/')
 def playlist_create(request):
     if request.method == 'POST':
         form = PlaylistCreationForm(request.POST)
