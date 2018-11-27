@@ -149,7 +149,7 @@ print("Generated users:")
 for a in range(0, 50):
     firstName = fake.first_name()
     lastName = fake.last_name()
-    username = firstName.lower()[0] + lastName.lower()
+    username = firstName.lower()[0] + lastName.lower() + str(a)
     email = f"{username}@326.edu"
     password = lastName
     user = User.objects.create_user(username, email, password)

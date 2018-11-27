@@ -11,6 +11,7 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("playlistSettings/", views.playlistSettings, name="playlistSettings"),
     path("signup/", views.signup, name="signup"),
+    path("mylists/create_playlist/", views.playlist_create, name="Create")
     #path("songs/", views.SongListView.as_view(), name="songs"),
     #path("song/<int:pk>", views.SongDetailView.as_view(), name="song-detail"),
 ]
