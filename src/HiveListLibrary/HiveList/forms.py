@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
 
 
 
-class PlaylistCreationForm(forms.Form):
+class PlaylistCreationForm(forms.ModelForm):
 
 	playlist_name = forms.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
 	playlist_description = forms.CharField(max_length=1000, help_text="Enter description for playlist")

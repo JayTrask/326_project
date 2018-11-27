@@ -66,11 +66,14 @@ for i in range(1, 200):
     p_private = fake.boolean()
     p_creation_date = fake.date()
     p_description = fake.text(100)
-    #p_vote_time = fake.date_time()
+    p_vote_time = fake.date_time()
     p_ranking = fake.random_int(0, 100000)
     p_voting_threshold = fake.random_int(1, 101)
     p_id = fake.uuid4()
-    playlist = Playlist(playlist_id = p_id, playlist_name = p_name, playlist_creation_date = p_creation_date, playlist_description = p_description, playlist_is_private = p_private, playlist_ranking = p_ranking, playlist_votingthreshold = p_voting_threshold)
+    playlist = Playlist(playlist_id=p_id, playlist_name=p_name, playlist_creation_date=p_creation_date,
+                        playlist_description=p_description, playlist_is_private=p_private,
+                        playlist_ranking=p_ranking, playlist_votingthreshold=p_voting_threshold,
+                        playlist_vote_time=p_vote_time)
     playlist.save()
     playlists.append(playlist)
  

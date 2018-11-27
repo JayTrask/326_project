@@ -6,7 +6,7 @@ from HiveList.models import Genre, Playlist, Contributors, Artist, Song, Genre, 
 
 @admin.register(Playlist)
 class PlaylistAdmin(admin.ModelAdmin):
-    list_display = ("playlist_name", "playlist_name")
+    list_display = ("playlist_id", "playlist_name", "playlist_creation_date", "playlist_vote_time", "playlist_is_private")
     
 
 

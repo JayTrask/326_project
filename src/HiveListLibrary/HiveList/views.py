@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth import update_session_auth_hash, login, authenticate
 from django.contrib import messages
+from django.utils import timezone
 
 
 # Create your views here.
@@ -63,10 +64,13 @@ def Home(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "Home.html", context=context)
 
+#__gte greater than or equal to
+# __lt less than
 @login_required(login_url='/accounts/login/')
 def myLists(request):
-    IP_playlists = Playlist.objects.all()[:10]
-    My_playlists = Playlist.objects.all()[11:21]
+    loggedInUser = request.user
+    IP_playlists = Playlist.objects.filter(playlist_creator_id=loggedInUser, playlist_vote_time__gte=timezone.now())
+    My_playlists = Playlist.objects.filter(playlist_creator_id=loggedInUser, playlist_vote_time__lt=timezone.now())
 
     context = {
         "My_IP_Playlists": IP_playlists,

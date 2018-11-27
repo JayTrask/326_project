@@ -3,6 +3,7 @@ from django.db import models
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
+from django.utils import timezone
 from django.urls import reverse
 
 now = datetime.datetime.now()
@@ -22,6 +23,7 @@ class Playlist(models.Model):
     playlist_ranking = models.IntegerField(default=0)
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     playlist_is_private = models.BooleanField(default=False)
+    playlist_vote_time = models.DateField(blank=True, null=True)
 
     class Meta:
         permissions = (("can_contribute", "Contribute songs"),)
