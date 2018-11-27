@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <title>HiveList</title>
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css/style_01.css' %}">
+      <link rel="shortcut icon" href="{% static 'images/Logo.png' %}">
+  </head>
+
+  <nav class="navbar navbar-light ">
+        <a href="#" class="navbar-brand"><h1><img src="../static/images/Logo.png" width="50" height="50" class="logo">HiveList</h1></a>
+
+        <ul class="nav justify-content-center">
+
+        <li class="nav-item">
+        <!--  <a class="nav-link nav-item" href="/Home.html">Home</a>-->
+        </li>
+
+        <li class="nav-item">
+        <!--<a class="nav-link nav-item" href="#">Explore</a>-->
+        </li>
+
+        <li class="nav-item">
+        <!--<a class="nav-link nav-item" href="myLists.html">My Lists</a>-->
+        </li>
+
+        <li class="nav-item">
+        <!--<a class="nav-link nav-item" href="profile.html">Profile</a>-->
+        </li>
+
+    </ul>
+
+    </nav>
+
+
+  <body>
+	 <div class="container-fluid gedf-wrapper">
+
+	 	<div class="row">
+
+	 		<div class="col-md-6 gedf-main working-playlist">
+	 			<div class="card gedf-card playlist-card">
+	 				<div class="card-body">
+	 						{% block content %}
+							<h2>New Playlist</h2>
+						    	<form method="post">
+							{% csrf_token %}
+							{{ form.as_p }}
+							<button type="submit">Create</button>
+							</form>
+
+							{% endblock %}
+
+	 				</div>
+	 			</div>
+	 			
+	 		</div>
+
+	 		<div class="col-md-6 gedf-main working-playlist">
+	 			<div class="card gedf-card playlist-card">
+	 				<div class="card-body">
+	 					</table>
+	 				</div>
+	 			</div>
+
+	 		</div>
+
+		</div>
+	</div>
+
+
+
+
+  </body>
+</html>

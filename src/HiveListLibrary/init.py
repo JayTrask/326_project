@@ -85,7 +85,7 @@ for i in range(1, 200):
 
 # Create SongInstances
 song_instances = []
-for i in range(1, 1000):
+for i in range(1, 10):
     si_id = songs[fake.random_int(0, len(songs)) - 1]
     si_playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
     si_number_yes_votes = fake.random_int(0, 500)
@@ -135,3 +135,45 @@ $ python3 manage.py runserver 0.0.0.0:8080
 ====================================================================
 """
 print(message)
+
+# NEW 17
+#ct = ContentType.objects.get_for_model(Playlist)
+#permission = Permission.objects.get(
+            #codename="can_mark_returned", name="Set book as returned", content_type=ct
+            #)
+  
+
+# Create and add users
+users = []
+print("Generated users:")
+for a in range(0, 50):
+    firstName = fake.first_name()
+    lastName = fake.last_name()
+    username = firstName.lower()[0] + lastName.lower() + str(a)
+    email = f"{username}@326.edu"
+    password = lastName
+    user = User.objects.create_user(username, email, password)
+    user.first_name = firstName
+    user.last_name = lastName
+    #user.last_name = a.last_name
+    #user.user_permissions.add(permission)
+    user.save()
+    users.append(user)
+    print(f"  username: {username}, password: {password}")
+
+for i in range(0, len(playlists)):
+    a_playlist = playlists[i]
+    a_user = users[fake.random_int(0, len(users)) - 1]
+    a_playlist.playlist_creator_id = a_user
+    a_playlist.save()
+for i in range(0, len(song_instances)):
+    a_songinstance = song_instances[i]
+    a_adder_id = users[fake.random_int(0, len(users)) - 1]
+    a_songinstance.adder_id = a_adder_id
+    a_songinstance.save()
+for i in range(0, len(contributors)):
+    a_contributor = contributors[i]
+    a_contrib = users[fake.random_int(0, len(users)) - 1]
+    a_contributor.contributor_id = a_contrib
+    a_contributor.save()
+

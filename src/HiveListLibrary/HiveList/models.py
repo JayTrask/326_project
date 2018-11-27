@@ -17,24 +17,23 @@ class Playlist(models.Model):
         help_text="Unique ID for this particular Playlist across entire site"
     )
     playlist_name = models.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
-    #User needs to be implemented before foreignKey to user can be used
     playlist_creator_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     playlist_creation_date = models.DateField(auto_now_add=True, blank=True)
     playlist_description = models.TextField(max_length=1000, help_text="Enter description for playlist")
-    #playlist_vote_time = models.DateTimeField(null=True, blank=True)
     playlist_ranking = models.IntegerField(default=0)
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     playlist_is_private = models.BooleanField(default=False)
 
-    
+    class Meta:
+        permissions = (("can_contribute", "Contribute songs"),)
+
     def __str__(self):
         return self.playlist_name
 
 
 class Contributors(models.Model):
     playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
-    #need to users to be implemented first before foreignKey to user can be used
-    #contributor_id= models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    contributor_id= models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     
 
     def __str__(self):
@@ -91,9 +90,7 @@ class SongInstance(models.Model):
     playlist_id = models.ForeignKey(Playlist, on_delete=models.SET_NULL, null=True)
     number_yes_votes = models.IntegerField(default=0)
     number_no_votes = models.IntegerField(default=0)
-    
-    #need user first
-    #contributor_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    adder_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return str(self.song_instance_id)
