@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 
-from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance\
-
+from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
+from HiveList.forms import SignUpForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
+from django.contrib.auth import update_session_auth_hash, login, authenticate
 from django.contrib import messages
 
 
@@ -116,3 +116,19 @@ def profile(request):
     }
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "profile.html", context=context)
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/HiveList/profile')
+            
+    else:
+        form = SignUpForm()   
+    return render(request, 'registration_form.html', {'form': form})
