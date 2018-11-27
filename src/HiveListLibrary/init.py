@@ -85,7 +85,7 @@ for i in range(1, 200):
 
 # Create SongInstances
 song_instances = []
-for i in range(1, 1000):
+for i in range(1, 10):
     si_id = songs[fake.random_int(0, len(songs)) - 1]
     si_playlist_id = playlists[fake.random_int(0, len(playlists)) - 1]
     si_number_yes_votes = fake.random_int(0, 500)
@@ -161,11 +161,19 @@ for a in range(0, 50):
     users.append(user)
     print(f"  username: {username}, password: {password}")
 
-print("\nUsers who have a playlist:")
-for i in range(0, 5):
-    a_playlist = playlists[fake.random_int(0, len(playlists)) - 1]
+for i in range(0, len(playlists)):
+    a_playlist = playlists[i]
     a_user = users[fake.random_int(0, len(users)) - 1]
     a_playlist.playlist_creator_id = a_user
     a_playlist.save()
-    print(f"  {a_user.username}")
+for i in range(0, len(song_instances)):
+    a_songinstance = song_instances[i]
+    a_adder_id = users[fake.random_int(0, len(users)) - 1]
+    a_songinstance.adder_id = a_adder_id
+    a_songinstance.save()
+for i in range(0, len(contributors)):
+    a_contributor = contributors[i]
+    a_contrib = users[fake.random_int(0, len(users)) - 1]
+    a_contributor.contributor_id = a_contrib
+    a_contributor.save()
 
