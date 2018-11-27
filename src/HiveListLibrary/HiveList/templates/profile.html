@@ -36,6 +36,7 @@
 							<p>Name: {{ user.first_name }} {{ user.last_name }}</p>
 							<p>Number of playlists: {{ playlistCount }}</p>
 							<p>Username: {{ user.username }}</p>
+							<p>Email: {{ user.email }}</p>
 	 						</div>
 	 					</div>
 					</div>
@@ -46,12 +47,7 @@
 						<h2>User Settings</h2>
 							<br>
 							<h4>Email Address: {{ user.email }}</h4>
-							<table class="table table-striped">
-                                <tr><td>Change Email Address: <input type="text" name="email address" style="width: 200px;"></td></tr>
-							</table>
-                                <button type="button" onclick="alert('Email Changed.')" style="height:30px; width:120px">Change Email</button>
-							<br>
-                            <br>
+                            				<br>
 							<h4>Change Password:</h4>
 							<br>
 							<form method="Post">

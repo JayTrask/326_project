@@ -25,7 +25,7 @@ class PlaylistCreationForm(forms.ModelForm):
 	playlist_description = forms.CharField(max_length=1000, help_text="Enter description for playlist")
 	playlist_vote_time = forms.DateTimeField()
 	playlist_votingthreshold = forms.IntegerField()
-	playlist_is_private = forms.BooleanField()
+	playlist_is_private = forms.BooleanField(required=False)
 
 	class Meta:
 		model = Playlist

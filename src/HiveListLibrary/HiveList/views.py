@@ -107,8 +107,8 @@ def profile(request):
 
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, form.user)
-            return redirect('/profile')
+            #update_session_auth_hash(request, form.user)
+            return redirect('/HiveList')
         else:
             messages.error(request, "Please correct the error shown below")
 
