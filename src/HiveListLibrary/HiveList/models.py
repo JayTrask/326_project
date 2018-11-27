@@ -26,7 +26,9 @@ class Playlist(models.Model):
     playlist_votingthreshold = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     playlist_is_private = models.BooleanField(default=False)
 
-    
+    class Meta:
+        permissions = (("can_contribute", "Contribute songs"),)
+
     def __str__(self):
         return self.playlist_name
 
