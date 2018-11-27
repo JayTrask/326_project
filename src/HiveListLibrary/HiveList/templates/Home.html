@@ -11,7 +11,7 @@
 	 					<h2>IP Playlists</h2>
 		 					<table class="table table-hover">
                                 <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Private or Public</th></tr>
-		 						{% for playlist in IP_playlists %}
+		 						{% for playlist in ip_playlists %}
 		 						<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creator_id }}</td><td>{{ playlist.playlist_vote_time }}</td></tr>
 		 						{% endfor %}
 							</table>
@@ -22,9 +22,9 @@
 	 				<div class="card-body">
 	 					<h2>Top 10 Playlists</h2>
 		 					<table class="table table-striped">
-                            <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Description</th></tr>
+                            <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Ranking</th><th>Description</th></tr>
 		 						{% for playlist in top_10 %}
-			 					<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_description }}</td></tr>
+			 					<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_ranking }}</td><td>{{ playlist.playlist_description }}</td></tr>
 			 					{% endfor %} <!-- todo: add 'view all' button and page-->
 		 					</table>
 	 				</div>
@@ -54,7 +54,7 @@
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
 	 					<h2>Profile</h2>
-	 						{{ profile_information }}
+	 						Username: {{ profile_information }}
 	 				</div>
 	 			</div>
 

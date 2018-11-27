@@ -21,8 +21,8 @@ def index(request):
     return render(request, "index.html", context=context)
 
 @login_required(login_url='/accounts/login/')
-def currentPlaylist(request):
-    playlist = Playlist.objects.order_by("?").first()
+def currentPlaylist(request, playlist_id):
+    playlist = Playlist.objects.get(playlist_id__exact=playlist_id)
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
     # Render the HTML tmeplate index.html with the data in the context variable
@@ -48,16 +48,19 @@ def Explore(request):
 
 def Home(request):
     # IP_playlists = pass
-    top_10_playlists = Playlist.objects.all()[0:10]
+    loggedInUser = request.user
+    ip_playlists = Playlist.objects.filter(playlist_creator_id=loggedInUser, playlist_vote_time__gte=timezone.now())
+    top_10_playlists = Playlist.objects.filter(playlist_ranking__range=[1, 10])
     public_playlists_var = Playlist.objects.filter(playlist_is_private__exact=False)[0:5]  # TODO: make pages
     # profile_information = pass
     # playlist_export = pass
 
     context = {
         # "IP_playlists": IP_playlists
+        "ip_playlists": ip_playlists,
         "top_10": top_10_playlists,
         "public_playlists": public_playlists_var,
-        # "profile_information": profile_information
+        "profile_information": request.user
         # "playlist_export": playlist_export
     }
 
@@ -95,8 +98,8 @@ def playlistSettings(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     loggedInUser = request.user
-    userPlaylists = Playlist.objects.filter(playlist_creator_id=loggedInUser)
-    count = userPlaylists.count()
+    contributed_playlists = Playlist.objects.filter(playlist_creator_id=loggedInUser)
+    count = contributed_playlists.count()
     #all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     #all_songs = Song.objects.filter(song_id__in=all_songInstances)
     if request.method == "POST":
@@ -113,7 +116,7 @@ def profile(request):
         form = PasswordChangeForm(user=request.user)
 
     context = {
-        "playlists": userPlaylists,
+        "playlists": contributed_playlists,
         "user" : loggedInUser,
         "playlistCount" : count,
         "form" : form,

@@ -4,7 +4,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("currentPlaylist/", views.currentPlaylist, name="currentPlaylist"),
+    path(r'^currentPlaylist/(?P<playlist_id>[0-9]+)?$', views.currentPlaylist, name="currentPlaylist"),
+    path(r'^currentPlaylist/?$', views.currentPlaylist, name="currentPlaylist"),
     path("home/", views.Home, name="home"),
     path("explore/", views.Explore, name="explore"),
     path("mylists/", views.myLists, name="mylists"),
