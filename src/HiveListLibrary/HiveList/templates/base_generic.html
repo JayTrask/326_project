@@ -36,7 +36,7 @@
 				<a class="nav-link nav-item" href={% url 'profile' %}>Profile</a>
   			</li>
   			<li class="nav-item">
-				<a class="nav-link nav-item" href={% url 'index' %}>Log out</a>
+				<a class="nav-link nav-item" href={% url 'logout' %}?next={{request.path}}>Log out</a>
   			</li>
 		</ul>
     </nav>
