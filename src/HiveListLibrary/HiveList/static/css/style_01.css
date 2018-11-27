@@ -52,3 +52,9 @@ html, body
 	top: 18px;
 	left 10px;
 }
+
+label{
+    display: inline-block;
+    color: #C25100
+    width: 100px;
+}

@@ -18,8 +18,14 @@
            
 		<h2>Sign up</h2>
 	    	<form method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
+                {% csrf_token %}
+                    {% for field in form %}
+                        <div class="fieldWrapper">
+                            {{ field.errors }}
+                            <label>{{ field.label_tag }}</label> {{ field }}
+                        </div>
+                    {% endfor %}
+		<!--{{ form.as_table }}-->
 		<button type="submit">Sign up</button>
 		</form>
 
