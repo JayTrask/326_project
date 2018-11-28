@@ -1,0 +1,7 @@
+For this submission, I worked on a couple things:
+
+I worked on fixing up the Welcome page and other pages that stemmed from that one. When the user wasn't logged in, we wanted the nav bar to still be there, but to not be functional with the words and links that are there when a person is logged in. That way, a person couldn't access our website and special pages without being logged in. To quickly remedy this, I actually made another template for our page that was the nav bar, but just with the logo and none of the other links. 
+
+I then worked on finding and debugging some of our issues with certain pages. I was able to identify little problems that we had, and suggested to other team members to fix them if that was specifically in code that they were working on during the working session. Caleb was especially good at finding the fix to the issues, even before I was able to tell him. On another page, Omar and I found that the nav bar was totally broken, and also there was a random extra box. Quickly, I doctored up that page and pushed it to avoid other conflicts.
+
+Lastly, I worked on the script for the video and the group submission write-up with Olivia. We went through each page and documented each of the new and interesting features, so then Omar could read off of the script and not worry about missing anything. We also wrote up the group submission part and double checked to make sure we hit all the bullets. 
