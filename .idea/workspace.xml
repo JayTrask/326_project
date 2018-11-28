@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38fadadd-7378-48a3-b5d9-581fca96b2a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/Omar_Sanchez_submission_03.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Omar_Sanchez_submission_03.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Omar_Sanchez_submission_03.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +45,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="904" />
+          <entry key="md" value="733" />
           <entry key="py" value="1210" />
           <entry key="sh" value="7" />
         </counts>
@@ -53,6 +53,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="904" />
+          <entry key="Markdown" value="733" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Python" value="1210" />
         </counts>
@@ -101,7 +102,9 @@
         <entry file="file://$PROJECT_DIR$/docs/Omar_Sanchez_submission_03.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="85">
+                <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -195,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/HiveListLibrary/HiveList/templates/myLists.html" />
         <option value="$PROJECT_DIR$/src/HiveListLibrary/HiveList/templates/currentPlaylist.html" />
         <option value="$PROJECT_DIR$/src/HiveListLibrary/HiveList/urls.py" />
+        <option value="$PROJECT_DIR$/docs/Omar_Sanchez_submission_03.md" />
       </list>
     </option>
   </component>
@@ -486,7 +490,9 @@
     <entry file="file://$PROJECT_DIR$/docs/Omar_Sanchez_submission_03.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor />
+          <first_editor relative-caret-position="85">
+            <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
           <second_editor />
         </state>
       </provider>
