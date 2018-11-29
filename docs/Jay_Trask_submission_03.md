@@ -1,0 +1,3 @@
+I contributed in many ways this project. Primarily, I was tasked with creating a form in which the user may create a new entry into the database. I accomplished this by focusing on one of the more important forms on the application; the playlist creation form. I was able to create the form successfully as well as implement the correct view and url mapping of the form.
+
+In addition to this, I helped others with their tasks for the project. I helped to outline what needed to be done specifically to get the project completed, which other teammates were able to set up a trello board and assign themselves with what they wanted to work on.
