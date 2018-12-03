@@ -15,8 +15,8 @@
 							<tr scope="row"><th>Song Name</th><th>Artist</th><th>Number of Votes</th><th>Vote</th></tr>
 							{% for song in songs %}
 								<tr>
-                                    <td class= "songName">{{ song.song_id.title }}</td>
-                                    <td class= "artistName">{{ song.song_id.artist }}</td>
+                                    <td class="songName">{{ song.song_id.title }}</td>
+                                    <td class="artistName">{{ song.song_id.artist }}</td>
 				    <td>Yes: {{ song.number_yes_votes }}, No: {{ song.number_no_votes }}</td>
 				    <td class="vote">
 					    <form method="post">
