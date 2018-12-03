@@ -12,12 +12,20 @@
 						<!-- Link to playlist settings -->
 						<a href={% url 'playlistSettings' %}>Playlist Settings</a>
 	 					<table class="table table-hover">
-	 						<tr scope="row"><th>Song Name</th><th>Artist</th><th>Vote</th></tr>
+							<tr scope="row"><th>Song Name</th><th>Artist</th><th>Number of Votes</th><th>Vote</th></tr>
 							{% for song in songs %}
 								<tr>
-                                    <td class= "songName">{{ song.title }}</td>
-                                    <td class= "artistName">{{ song.artist }}</td>
-                                    <td class="vote"><button>yes</button> <button>no</button></td></tr>
+                                    <td class= "songName">{{ song.song_id.title }}</td>
+                                    <td class= "artistName">{{ song.song_id.artist }}</td>
+				    <td>Yes: {{ song.number_yes_votes }}, No: {{ song.number_no_votes }}</td>
+				    <td class="vote">
+					    <form method="post">
+						    {% csrf_token %}
+						    {{ voteForm.as_p }}
+						    <button type="submit" name="update-votes">Update</button>
+					    </form>
+				    				
+				    </td></tr>
 							{% endfor %}
 	 					</table>
 	 				</div>
@@ -32,7 +40,7 @@
 	 						<form method="post">
 								{% csrf_token %}
 								{{ form.as_p }}
-								<button type="submit">Add Song</button>
+								<button type="submit" name="add-song">Add Song</button>
         						</form>
         					<table class="table table-striped">
         					</table>

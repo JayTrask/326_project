@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
-from HiveList.forms import SignUpForm, PlaylistCreationForm, AddSongForm
+from HiveList.forms import SignUpForm, PlaylistCreationForm, AddSongForm, VoteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
@@ -23,27 +23,37 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def currentPlaylist(request, playlist_id):
     playlist = Playlist.objects.get(playlist_id__exact=playlist_id)
+    songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id)
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
     
     form = AddSongForm()
+    voteForm = VoteForm()
     if request.method == "POST":
         form = AddSongForm(request.POST)
-        if form.is_valid:
+        voteForm = VoteForm(request.POST)
+        success = False
+        if 'add-song' in request.POST and form.is_valid:
             song = form.save(commit=False)
             song.playlist_id = playlist
             song.adder_id = request.user
             song.save()
-
+            success = True
+        if 'update-votes' in request.POST and voteForm.is_valid:
+            voteForm.save()
+            success = True
+        if success:
             return redirect('currentPlaylist', playlist_id)
     else:
         form = AddSongForm()
+        voteForm = VoteForm()
 
     # Render the HTML tmeplate index.html with the data in the context variable
     context = {
-        "songs": all_songs,
+        "songs": songInstances,
         "current_playlist": playlist,
         "form": form,
+        "voteForm": voteForm,
     }
     return render(request, "currentPlaylist.html", context=context)
 

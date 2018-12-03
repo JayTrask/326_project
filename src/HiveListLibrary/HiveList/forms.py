@@ -51,3 +51,11 @@ class AddSongForm(forms.ModelForm):
         model = SongInstance
         exclude = ['song_instance_id', 'playlist_id', 'number_yes_votes', 'number_no_votes', 'adder_id']
 
+
+class VoteForm(forms.ModelForm):
+
+    class Meta:
+        model = SongInstance
+        fields = ['number_yes_votes','number_no_votes']
+        
+
