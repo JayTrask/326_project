@@ -30,7 +30,14 @@ def currentPlaylist(request, playlist_id):
     if request.method == "POST":
         form = AddSongForm(request.POST)
         if form.is_valid:
-            return redirect('HiveList/currentPlaylist')
+            song = form.save(commit=False)
+            song.playlist_id = playlist
+            song.adder_id = request.user
+            song.save()
+
+            return redirect('currentPlaylist', playlist_id)
+    else:
+        form = AddSongForm()
 
     # Render the HTML tmeplate index.html with the data in the context variable
     context = {
