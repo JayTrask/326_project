@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms.widgets import NumberInput
-from HiveList.models import Playlist
+from HiveList.models import Playlist, Song
 
 
 class SignUpForm(UserCreationForm):
@@ -40,4 +40,10 @@ class PlaylistCreationForm(forms.ModelForm):
 
 
 
+class NamesChoiceField(forms.ModelChoiceField):
+        def label_from_instance(self, obj):
+                    return '{title} by {artist}'.format(title=obj.title, artist=obj.artist)
+
+class AddSongForm(forms.Form):
+    songs = NamesChoiceField(queryset=Song.objects.all())
 

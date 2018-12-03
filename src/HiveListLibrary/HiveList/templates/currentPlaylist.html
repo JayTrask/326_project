@@ -29,16 +29,10 @@
 	 			<div class="card gedf-card search-box">
 	 				<div class="card-body">
 	 					<h2>Add Songs</h2>
-	 						<form class="form-inline">
-            					<div class="input-group">
-                					<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                						<div class="input-group-append">
-                    						<button class="btn btn-outline-primary" type="button" id="button-addon2">
-                        						<i class="fa fa-search"></i>
-                    						</button>
-                						</div>
-            					</div>
-        					</form>
+	 						<form method="post">
+								{% csrf_token %}
+								{{ form.as_p }}
+        						</form>
         					<table class="table table-striped">
         					</table>
 	 				</div>

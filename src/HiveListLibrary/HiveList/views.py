@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from HiveList.models import Playlist, Contributors, Artist, Song, Genre, SongInstance
-from HiveList.forms import SignUpForm, PlaylistCreationForm
+from HiveList.forms import SignUpForm, PlaylistCreationForm, AddSongForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
@@ -25,10 +25,18 @@ def currentPlaylist(request, playlist_id):
     playlist = Playlist.objects.get(playlist_id__exact=playlist_id)
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
+    
+    form = AddSongForm()
+    if request.method == "POST":
+        form = AddSongForm(request.POST)
+        if form.is_valid:
+            return redirect('HiveList/currentPlaylist')
+
     # Render the HTML tmeplate index.html with the data in the context variable
     context = {
         "songs": all_songs,
-        "current_playlist": playlist
+        "current_playlist": playlist,
+        "form": form,
     }
     return render(request, "currentPlaylist.html", context=context)
 
