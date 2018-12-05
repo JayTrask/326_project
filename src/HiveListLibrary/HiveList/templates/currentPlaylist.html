@@ -19,11 +19,12 @@
                                     <td class="artistName">{{ song.song_id.artist }}</td>
 				    <td>Yes: {{ song.number_yes_votes }}, No: {{ song.number_no_votes }}</td>
 				    <td class="vote">
-					    <form method="post">
+					  <!--  <form method="post">
 						    {% csrf_token %}
 						    {{ voteForm.as_p }}
 						    <button type="submit" name="update-votes">Update</button>
-					    </form>
+					  </form> -->
+					  <a href="upvote/{{ current_playlist.playlist_id }}/{{ song.song_instance_id }}">Yes</a> <a href="downvote/{{ current_playlist.playlist_id }}/{{ song.song_instance_id }}">No</a>
 				    				
 				    </td></tr>
 							{% endfor %}
