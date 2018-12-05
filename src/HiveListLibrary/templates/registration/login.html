@@ -15,8 +15,8 @@
           <!---Description of HiveList-->
           <div class="ps-general">
             {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-      {% endif %}
+            <p>The username or password does not match any account. <a href="{% url 'signup' %}">Sign up for an account</a></p>
+            {% endif %}
 
       {% if next %}
         {% if user.is_authenticated %}

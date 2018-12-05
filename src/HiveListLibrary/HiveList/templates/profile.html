@@ -23,11 +23,8 @@
 					</div>
 					<br>
 				</div>
-			</div>
 
-			<div class="col-md-6">
-				<!---Suggestions-->
-				<div class="card gedf-card your-suggestions">
+								<div class="card gedf-card your-suggestions">
 					<div class="card-body">
 						<h2>Profile Overview</h2>
 						<div class="card gedf-card">
@@ -40,6 +37,10 @@
 	 					</div>
 					</div>
 				</div>
+			</div>
+
+			<div class="col-md-6">
+				<!---Suggestions-->
 
 				<div class = "card gedf-card user-settings">
 					<div class="card-body">
@@ -51,7 +52,12 @@
 							<br>
 							<form method="Post">
 							{% csrf_token %}
-							{{ form.as_p }}
+								{% for field in form %}
+									<div class="fieldWrapper">
+                            			{{ field.errors }}
+                            			<label>{{ field.label_tag }}</label> {{ field }}
+                        			</div>
+                    			{% endfor %}
 							<button type="submit">Submit</button>
 							</form>	
 						
@@ -80,31 +86,6 @@
 					</div>
 				</div>
 			-->
-
-			
-			<!-- side cards -->
-			<div class="col-md-2">
-				<!---Suggestions-->
-				<div class="card gedf-card your-suggestions">
-					<div class="card-body">
-						<h2>Your Suggestions</h2>
-						
-							{{ playlist_suggestions }}
-						
-					</div>
-				</div>
-
-				<div class="card gedf-card your-statistics">
-					<div class="card-body">
-						<h2>Your Statistics</h2>
-
-							{{ user_statistics }}
-					</div>
-				</div>
-
-			
-			</div>
-
 			
 		</div>
 	</div>
