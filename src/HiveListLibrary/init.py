@@ -97,6 +97,8 @@ for i in range(1, 10):
     song_instance = SongInstance(song_instance_id = si_siid, song_id = si_id, playlist_id = si_playlist_id, number_yes_votes = si_number_yes_votes, number_no_votes = si_number_no_votes)
     song_instance.save()
     song_instances.append(song_instance)
+
+
 """
 # Create VoteInstances
 vote_instances = []
@@ -110,6 +112,7 @@ for i in range(1, 100):
     vote_instance.save()
     vote_instances.append(vote_instance)
 """
+
 
 #Create SuperUser
 username = "admin"

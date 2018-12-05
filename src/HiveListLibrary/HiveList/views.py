@@ -26,7 +26,7 @@ def currentPlaylist(request, playlist_id):
     songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id)
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
-    
+
     form = AddSongForm()
     voteForm = VoteForm()
     if request.method == "POST":
