@@ -20,6 +20,19 @@ def index(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
+def upvote(request, song_instance_id, playlist_id):
+    song_instance = SongInstance.objects.get(pk=song_instance_id)
+    song_instance.number_yes_votes = song_instance.number_yes_votes + 1
+    song_instance.save()
+    return redirect('currentPlaylist', playlist_id)
+
+def downvote(request, song_instance_id, playlist_id):
+    song_instance = SongInstance.objects.get(pk=song_instance_id)
+    song_instance.number_no_votes = song_instance.number_no_votes + 1
+    song_instance.save()
+    return redirect('currentPlaylist', playlist_id)
+
+
 @login_required(login_url='/accounts/login/')
 def currentPlaylist(request, playlist_id):
     playlist = Playlist.objects.get(playlist_id__exact=playlist_id)
