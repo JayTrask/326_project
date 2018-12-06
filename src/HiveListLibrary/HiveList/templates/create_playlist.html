@@ -1,26 +1,26 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
 	 <div class="container-fluid gedf-wrapper">
-
 	 	<div class="row">
-
-	 		<div class="col-md-12 gedf-main working-playlist">
-	 			<div class="card gedf-card playlist-card">
-	 				<div class="card-body">
-							<h2>New Playlist</h2>
+            <div class="col-md-3"></div>
+            <div class="col-md-6 col-centered">
+                <div class="card gedf-card ps-body">
+	 				<div class="card-body" style="margin-left: auto; margin-right: auto; text-align: center;">
+							<h2 align="center">New Playlist</h2>
 						    	<form method="post">
 							{% csrf_token %}
-							{{ form.as_p }}
+							{% for field in form %}
+                                <div class="fieldWrapper">
+                                    {{ field.errors }}
+                                    <label>{{ field.label_tag }}</label> {{ field }}
+                                </div>
+                            {% endfor %}
 							<input type="submit" value="Create">
 							</form>
-							
-
 	 				</div>
 	 			</div>
-	 			
-	 	
+            </div>
+        </div>
 	</div>
-
 {% endblock %}

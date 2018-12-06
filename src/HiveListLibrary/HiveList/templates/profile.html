@@ -1,92 +1,99 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-	<!-- Beginning of Page -->
-	<div class="container-fluid gedf-wrapper">
-	
-		<div class="row">
-		
-		<!-- main cards -->
-			<div class="col-md-4 your-contributions">
-				<div class="card gedf-card ps-body">
-					<div class="card-body">
-						<!---contributions-->
-						<div class="ps-general">
-							<h2>Your Playlists</h2>
-	 					<table class="table table-hover">
-								<tr scope="row"><th>Playlist Name</th><th>Owner</th><th>Date Added</th></tr>
-								{% for playlist in playlists %}
-								<tr><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creator_id }}</td><td>{{ playlist.playlist_creation_date }}</td></tr>
-								{% endfor %}
-	 					</table>
-						</div>
-					</div>
-					<br>
-				</div>
+    <!-- Beginning of Page -->
+    <div class="container-fluid gedf-wrapper">
 
-								<div class="card gedf-card your-suggestions">
-					<div class="card-body">
-						<h2>Profile Overview</h2>
-						<div class="card gedf-card">
-	 						<div class="card-body">
-							<p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-							<p>Number of playlists: {{ playlistCount }}</p>
-							<p>Username: {{ user.username }}</p>
-							<p>Email: {{ user.email }}</p>
-	 						</div>
-	 					</div>
-					</div>
-				</div>
-			</div>
+        <div class="row">
 
-			<div class="col-md-6">
-				<!---Suggestions-->
+            <!-- main cards -->
+            <div class="col-md-4 your-contributions">
+                <div class="card gedf-card ps-body">
+                    <div class="card-body">
+                        <!---contributions-->
+                        <div class="ps-general">
+                            <h2>Your Playlists</h2>
+                            <table class="table table-striped">
+                                <tr scope="row">
+                                    <th>Playlist Name</th>
+                                    <th>Owner</th>
+                                    <th>Date Added</th>
+                                </tr>
+                                {% for playlist in playlists %}
+                                    <tr>
+                                        <td>{{ playlist.playlist_name }}</td>
+                                        <td>{{ playlist.playlist_creator_id }}</td>
+                                        <td>{{ playlist.playlist_creation_date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                </div>
 
-				<div class = "card gedf-card user-settings">
-					<div class="card-body">
-						<h2>User Settings</h2>
-							<br>
-							<h4>Email Address: {{ user.email }}</h4>
-                            				<br>
-							<h4>Change Password:</h4>
-							<br>
-							<form method="Post">
-							{% csrf_token %}
-								{% for field in form %}
-									<div class="fieldWrapper">
-                            			{{ field.errors }}
-                            			<label>{{ field.label_tag }}</label> {{ field }}
-                        			</div>
-                    			{% endfor %}
-							<button type="submit">Submit</button>
-							</form>	
-						
-							<br>
-							<br>
-							<h4>Default Privacy Settings: </h4>
-								<br>
-								<form>
-								<input type="radio" name="Access" value="public_priv" checked> Public<br>
-								<input type="radio" name="Access" value="private_priv"> Private (only friends)<br>
-								<input type="radio" name="Access" value="anon_priv"> Private (only you)<br>
-							</form>
-						
-					</div>
-				</div>
-			</div>
-				<!--	<div class = "card gedf-card user-settings">
-						<div class="card-body">
-							<h1>User Settings</h1>
-								<tr><td>Email Address:</td><td> Billy@example.com</td></tr>
-								<br>
-								<tr><td>User Setting 1: <input type="text" name="playlistname" style="width: 200px;"></td></tr>
-								<br>
-								<tr><td>User Setting 2: <input type="text" name="playlistname" style="width: 200px;"></td></tr>
-						</div>
-					</div>
-				</div>
-			-->
-			
-		</div>
-	</div>
+                <div class="card gedf-card your-suggestions">
+                    <div class="card-body">
+                        <h2>Profile Overview</h2>
+                        <div class="card gedf-card">
+                            <div class="card-body">
+                                <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                                <p>Number of playlists: {{ playlistCount }}</p>
+                                <p>Username: {{ user.username }}</p>
+                                <p>Email: {{ user.email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!---Suggestions-->
+
+                <div class="card gedf-card user-settings">
+                    <div class="card-body">
+                        <h2>User Settings</h2>
+                        <br>
+                        <h4>Email Address: {{ user.email }}</h4>
+                        <br>
+                        <h4>Change Password:</h4>
+                        <br>
+                        <form method="Post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                {{ field.errors }}
+                                <div class="fieldWrapper">
+                                    <label>{{ field.label_tag }}</label> {{ field }}
+                                </div>
+                            {% endfor %}
+                            <br>
+                            <h4>Default Privacy Settings: </h4>
+                            <br>
+                            <input type="radio" name="Access" value="public_priv" checked> Public<br>
+                            <input type="radio" name="Access" value="private_priv"> Private (only friends)<br>
+                            <input type="radio" name="Access" value="anon_priv"> Private (only you)<br>
+                            <br>
+                            <button type="submit">Submit</button>
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--	<div class = "card gedf-card user-settings">
+                    <div class="card-body">
+                        <h1>User Settings</h1>
+                            <tr><td>Email Address:</td><td> Billy@example.com</td></tr>
+                            <br>
+                            <tr><td>User Setting 1: <input type="text" name="playlistname" style="width: 200px;"></td></tr>
+                            <br>
+                            <tr><td>User Setting 2: <input type="text" name="playlistname" style="width: 200px;"></td></tr>
+                    </div>
+                </div>
+            </div>
+        -->
+
+        </div>
+    </div>
 {% endblock %}
