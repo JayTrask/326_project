@@ -19,3 +19,9 @@ function myFunction() {
     }
   }
 }
+
+//this needs to be moved to its own js file or the file name needs to be generalized
+$(document).ready(function () {
+  $('#top-10').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});

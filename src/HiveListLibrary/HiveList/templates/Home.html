@@ -10,7 +10,7 @@
 	 			<div class="card gedf-card ">
 	 				<div class="card-body">
 	 					<h2>In Progress Playlists</h2>
-		 					<table class="table table-striped">
+		 					<table class="table table-striped table-bordered table-sm">
                                 <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Voting Open Until</th></tr>
 		 						{% for playlist in ip_playlists %}
 		 						<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_vote_time }}</td></tr>
@@ -22,7 +22,7 @@
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
 	 					<h2>Top 10 Playlists</h2>
-		 					<table class="table table-striped">
+		 					<table id='top-10' class="table table-striped table-bordered table-sm">
                             <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Ranking</th><th>Description</th></tr>
 		 						{% for playlist in top_10 %}
 			 					<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_ranking }}</td><td>{{ playlist.playlist_description }}</td></tr>
@@ -33,11 +33,12 @@
 	 			
 	 		</div>
 
+			<script src="{% static 'javascript/explore.js' %}"></script>
 	 		<div class="col-md-5">
 	 			<div class="card gedf-card public-playlists">
 	 				<div class="card-body">
 	 					<h2>Public Playlists</h2>
-	 						<table class="table table-striped">
+	 						<table class="table table-striped table-bordered table-sm">
                                 <tr scope="row"><th>Playlist Name</th><th>Creation Date</th><th>Description</th></tr>
 	 							{% for playlist in public_playlists %}
 			 					<tr scope="row"><td>{{ playlist.playlist_name }}</td><td>{{ playlist.playlist_creation_date }}</td><td>{{ playlist.playlist_description }}</td></tr>
@@ -55,7 +56,7 @@
 	 			<div class="card gedf-card">
 	 				<div class="card-body">
 	 					<h2>Profile</h2>
-                        <a href='{% url 'profile' %}'><img rel="profile picture" src="{% static 'images/exampleProfile.png' %}" width=" 60" height="60" class="profile picture"></a>   {{ profile_information }}
+                        <a href="{% url 'profile' %}"><img rel="profile picture" src="{% static 'images/exampleProfile.png' %}" width=" 60" height="60" class="profile picture"></a>   {{ profile_information }}
 	 				</div>
 	 			</div>
 

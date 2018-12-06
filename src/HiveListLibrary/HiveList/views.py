@@ -75,7 +75,7 @@ def Explore(request):
     playlists = Playlist.objects.all()[:10]
     playlist_ids = Playlist.objects.all()[:10].values('playlist_id')
     all_songInstances = SongInstance.objects.filter(playlist_id__in=playlist_ids).values('song_id')
-    songs = Song.objects.filter(song_id__in=all_songInstances)
+    songs = Song.objects.all()[0:10]
     context = {
         "popular_playlists": playlists,
         "popular_songs": songs,
