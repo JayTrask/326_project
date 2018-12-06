@@ -1,64 +1,80 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-	 <div class="container-fluid gedf-wrapper">
+<div class="container-fluid gedf-wrapper">
 
-	 	<div class="row">
+    <div class="row">
 
-	 		<div class="col-md-8 gedf-main working-playlist">
-	 			<div class="card gedf-card playlist-card">
-	 				<div class="card-body">
-	 					<h2>{{ current_playlist }}</h2>
-						<!-- Link to playlist settings -->
-						<a href={% url 'playlistSettings' %}>Playlist Settings</a>
-	 					<table class="table table-hover">
-							<tr scope="row"><th>Song Name</th><th>Artist</th><th>Number of Votes</th><th>Vote</th></tr>
-							{% for song in songs %}
-								<tr>
-                                    <td class="songName">{{ song.song_id.title }}</td>
-                                    <td class="artistName">{{ song.song_id.artist }}</td>
-				    <td>Yes: {{ song.number_yes_votes }}, No: {{ song.number_no_votes }}</td>
-				    <td class="vote">
-					  <!--  <form method="post">
-						    {% csrf_token %}
-						    {{ voteForm.as_p }}
-						    <button type="submit" name="update-votes">Update</button>
-					  </form> -->
-					  <a href="upvote/{{ current_playlist.playlist_id }}/{{ song.song_instance_id }}">Yes</a> <a href="downvote/{{ current_playlist.playlist_id }}/{{ song.song_instance_id }}">No</a>
-				    				
-				    </td></tr>
-							{% endfor %}
-	 					</table>
-	 				</div>
-	 			</div>
-	 			
-	 		</div>
+        <div class="col-md-8 gedf-main working-playlist">
+            <div class="card gedf-card playlist-card">
+                <div class="card-body">
+                    <h2>{{ current_playlist }}</h2>
+                    <!-- Link to playlist settings -->
+                    <a href="{% url 'playlistSettings' %}">Playlist Settings</a>
+                    <table class="table table-hover">
+                        <tr scope="row">
+                            <th>Song Name</th>
+                            <th>Artist</th>
+                            <th>Number of Votes</th>
+                            <th>Vote</th>
+                        </tr>
+                        {% for song in songs %}
+                        <tr>
+                            <td class="songName">{{ song.song_id.title }}</td>
+                            <td class="artistName">{{ song.song_id.artist }}</td>
+                            <td>Yes: {{ song.number_yes_votes }}, No: {{ song.number_no_votes }}</td>
+                            <td class="vote">
+                                <!--  <form method="post">
+                                      {% csrf_token %}
+                                      {{ voteForm.as_p }}
+                                      <button type="submit" name="update-votes">Update</button>
+                                </form> -->
+                                <a href="upvote/{{ current_playlist.playlist_id }}/{{ song.song_instance_id }}">Yes</a>
+                                <a href="downvote/{{ current_playlist.playlist_id }}/{{ song.song_instance_id }}">No</a>
 
-	 		<div class="col-md-4">
-	 			<div class="card gedf-card search-box">
-	 				<div class="card-body">
-	 					<h2>Add Songs</h2>
-	 						<form method="post">
-								{% csrf_token %}
-								{{ form.as_p }}
-								<button type="submit" name="add-song">Add Song</button>
-        						</form>
-        					<table class="table table-striped">
-        					</table>
-	 				</div>
-	 			</div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
 
-	 			<div class="card gedf-card contributor-box">
-	 				<div class="card-body">
-	 					<h2>Contributors</h2>
-	 					<table class="table table-striped">
-        					</table>
-	 				</div>
-	 			</div>
+        </div>
 
-	 		</div>
+        <div class="col-md-4">
+            <div class="card gedf-card search-box">
+                <div class="card-body">
+                    <h2>Add Songs</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        {{ field.errors }}
+                        <div class="fieldWrapper">
+                            {{ field }}
+                        </div>
+                        {% endfor %}
+                        <br>
+                        <button type="submit" name="add-song">Add Song</button>
+                    </form>
+                    <table class="table table-striped">
+                    </table>
+                </div>
+            </div>
 
-		</div>
-	</div>
+            <div class="card gedf-card contributor-box">
+                <div class="card-body">
+                    <h2>Contributors</h2>
+                    <table class="table table-striped">
+                        <tr>
+                            <td class="contributor name">{{ creator.playlist_creator_id }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 {% endblock %}
                     

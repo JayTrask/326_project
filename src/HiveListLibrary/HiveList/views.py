@@ -39,6 +39,7 @@ def currentPlaylist(request, playlist_id):
     songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id)
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
+    creator = Playlist.objects.get(playlist_id__exact=playlist_id)
     
     form = AddSongForm()
     voteForm = VoteForm()
@@ -67,6 +68,7 @@ def currentPlaylist(request, playlist_id):
         "current_playlist": playlist,
         "form": form,
         "voteForm": voteForm,
+        "creator": creator
     }
     return render(request, "currentPlaylist.html", context=context)
 
