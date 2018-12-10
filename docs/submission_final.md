@@ -1,0 +1,1 @@
+﻿Inclusion of title (3 points)Inclusion of each section (12 points)Proper usage of the english language and well written (5 points)Solid description and presentation of the following sections (10 points):User Interface (2 points)Data Model (2 points)URL Routes/Mappings (2 points)Authentication/Authorization (2 points)Team Choice (2 points)
