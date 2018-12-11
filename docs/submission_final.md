@@ -18,7 +18,7 @@ Checklist by section:
 [EE]	UI
 []	Data Model
 [JT]	URL Routes/Mapping
-[]	Authentication/Authorization
+[JT]	Authentication/Authorization
 []	Team Choice
 []	Conclusion
 
@@ -121,7 +121,10 @@ Our application is unique mostly because of the voting feature. Now you can buil
 
 * Note: All pages except for the login, index, and signup pages have a redirect to the login page if the user is not currently logged in.
 
-***Authentication/Authorization: A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.
+# Authentication/Authorization:
+
+* All user authentication is done through the provided django authentication methods. This includes logging in as well as registering. 
+* As the application heavily relies on information provided to the application given the user (Most of the application is simply displaying information about playlists that the user is a contributor of) all pages aside from the index, login, and registration page provide a redirect to the login page if the user is not logged in.
 
 # Team Choice: From submission 3, we were able to implement:
 * create playlist form
