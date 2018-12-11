@@ -17,7 +17,7 @@ Checklist by section:
 [x] Team Members
 [EE]	UI
 []	Data Model
-[]	URL Routes/Mapping
+[JT]	URL Routes/Mapping
 []	Authentication/Authorization
 []	Team Choice
 []	Conclusion
