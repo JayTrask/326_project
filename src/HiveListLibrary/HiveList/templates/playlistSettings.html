@@ -2,98 +2,112 @@
 
 {% block content %}
 
-	<!-- Beginning of Page -->
-	<div class="container-fluid gedf-wrapper">
-	
-		<div class="row">
-		
-		<!-- main cards -->
-			<div class="col-md-8 gedf-main playlist-settings">
-				<div class="card gedf-card ps-body">
-					<div class="card-body">
-						<!-- General Settings -->
-						<div class="ps-general">
-							<h2>General Settings</h2>
-							
-							<table class="table table-striped">
+    <!-- Beginning of Page -->
+    <div class="container-fluid gedf-wrapper">
+
+        <div class="row">
+
+            <!-- main cards -->
+            <div class="col-md-8 gedf-main playlist-settings">
+                <div class="card gedf-card ps-body">
+                    <div class="card-body">
+                        <!-- General Settings -->
+                        <div class="ps-general">
+                            <h2>General Settings</h2>
+
+                            <table class="table table-striped">
                                 <tr>
-							        <form>
-								        <td>Playlist Name: {{ playlist_name }} <input type="text" name="playlistname" style="width: 250px;"></td>
-							        </form>
-							    </tr>
-							    <tr>
+                                    <form>
+                                        <td>Playlist Name: {{ playlist_name }} <input type="text" name="playlistname"
+                                                                                      style="width: 250px;"></td>
+                                    </form>
+                                </tr>
+                                <tr>
                                     <td><p>Song Count: {{ song_count }}</P></td>
 
                                 <tr>
                                     <form>
-							            <td>
+                                        <td>
                                             <p>Playlist Description:</p>
-                                            <textarea name="playlist-description" rows="14" cols="80">{{ playlist.playlist_description }}</textarea>
+                                            <textarea name="playlist-description" rows="14"
+                                                      cols="80">{{ playlist.playlist_description }}</textarea>
                                         </td>
                                     </form>
                                 </tr>
 
-							<tr>
-                                <td>
-                                    <p>Playlist Access:</p>
-							        <form>
-								        <input type="radio" name="Access" value="public" checked> Public <br>
-								        <input type="radio" name="Access" value="private"> Private
-							        </form>
-                                </td>
-							</tr>
-							</table>
-							
-						</div>
-					</div>
-					<div style="text-align: center;">
-					<button type="button" onclick="alert('Settings Saved.')" style="height:30px;width:120px">Save Changes</button>
-					</div>
-					<br>
-				</div>
-			</div>
-			
-			<!-- side cards -->
-			<div class="col-md-4">
-				<!-- Voting Settings -->
-				<div class="card gedf-card voting-settings">
-					<div class="card-body">
-						<h2>Voting Settings</h2>
-						
-						<table class="table table-striped">
-							<form>
-							<tr><td>Creation Date: {{ playlist.playlist_creation_date }} </td></tr>
-							<tr><td>Vote Threshold: {{ playlist.voting_threshold }}</td></tr>
-							</form> <!-- TODO: Edit this so that it displays the current vote period and current vote threshold prior to setting a new one. 
+                                <tr>
+                                    <td>
+                                        <p>Playlist Access:</p>
+                                        <form>
+                                            <input type="radio" name="Access" value="public" checked> Public <br>
+                                            <input type="radio" name="Access" value="private"> Private
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="button" onclick="alert('Settings Saved.')" style="height:30px;width:120px">Save
+                            Changes
+                        </button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+            <!-- side cards -->
+            <div class="col-md-4">
+                <!-- Voting Settings -->
+                <div class="card gedf-card voting-settings">
+                    <div class="card-body">
+                        <h2>Voting Settings</h2>
+
+                        <table class="table table-striped">
+                            <form>
+                                <tr>
+                                    <td>Creation Date: {{ playlist.playlist_creation_date }} </td>
+                                </tr>
+                                <tr>
+                                    <td>Vote Threshold: {{ playlist.voting_threshold }}</td>
+                                </tr>
+                            </form> <!-- TODO: Edit this so that it displays the current vote period and current vote threshold prior to setting a new one.
 										 Need to decide if we want to allow the period/threshold to change after the original values are set. -->
 
 
-										 <!-- TODO: Make a playlist creation page for playlists that don't already exist!!!!!!! -->
-							
-						</table>
-					</div>
-				</div>
+                            <!-- TODO: Make a playlist creation page for playlists that don't already exist!!!!!!! -->
 
-				<div class="card gedf-card voting-settings">
-					<div class="card-body">
-						<h2>Contributor Settings</h2>
-						
-						<table class="table table-striped">
-							<form>
-							<tr>
-                                <td>Add Contributor: <input type="text" name="votingperiod" style="width: 150px;"></td>
-                                <td><br><button type="button" onclick="alert('Contributor Added.')" style="height:25px;width:180px">Add Contributor</button></td>
-                            </tr>
-							<tr>
-                                <td>Search Contributors: <input type="text" name="searchcontrubutor" style="width: 300px;"></td>
-                            </tr>
-							</form>
-						</table>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card gedf-card voting-settings">
+                    <div class="card-body">
+                        <h2>Contributor Settings</h2>
+
+                        <table class="table table-striped">
+                            <form>
+                                <tr>
+                                    <td>Add Contributor: <input type="text" name="votingperiod" style="width: 150px;">
+                                    </td>
+                                    <td>
+                                        <button type="button" onclick="alert('Contributor Added.')"
+                                                style="height:30px; width:140px">Add Contributor
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Search Contributors: <input type="text" name="searchcontrubutor"
+                                                                    style="width: 300px;"></td>
+                                </tr>
+                            </form>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}

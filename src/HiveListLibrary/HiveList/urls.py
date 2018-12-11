@@ -13,7 +13,9 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("playlistSettings/", views.playlistSettings, name="playlistSettings"),
     path("signup/", views.signup, name="signup"),
-    path("mylists/create_playlist/", views.playlist_create, name="Create")
+    path("mylists/create_playlist/", views.playlist_create, name="Create"),
+    path("currentPlaylist/upvote/<uuid:playlist_id>/<uuid:song_instance_id>", views.upvote, name='upvote'),
+    path("currentPlaylist/downvote/<uuid:playlist_id>/<uuid:song_instance_id>", views.downvote, name='downvote')
     #path("songs/", views.SongListView.as_view(), name="songs"),
     #path("song/<int:pk>", views.SongDetailView.as_view(), name="song-detail"),
 ]

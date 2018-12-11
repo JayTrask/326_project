@@ -20,8 +20,8 @@ class SignUpForm(UserCreationForm):
 class PlaylistCreationForm(forms.ModelForm):
     playlist_name = forms.CharField(max_length=200, help_text="Enter a title for the playlist (e.g. Meat Bird Execution Playlist)")
     playlist_description = forms.CharField(max_length=1000, help_text="Enter description for playlist")
-    playlist_vote_time = forms.DateTimeField()
-    playlist_votingthreshold = forms.IntegerField()
+    playlist_vote_time = forms.DateTimeField(widget=forms.SelectDateWidget)
+    playlist_votingthreshold = forms.IntegerField(min_value=1, max_value=100)
     playlist_is_private = forms.BooleanField(required=False)
 
     class Meta:

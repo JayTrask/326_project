@@ -1,42 +1,35 @@
 {% extends "non_funct_nav.html" %}
-<html lang="en">
+
 {% block content %}
+    <!---StartOfMainDiv-->
+    <div class="container-fluid">
+        <h1 align="center">Welcome to HiveList</h1>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 col-centered">
+                <div class="card gedf-card ps-body">
+                    <div class="card-body" style="margin-left: auto; margin-right: auto; text-align: center;">
+                        <!--Description of HiveList-->
+                        <div class="ps-general">
 
-  <!---StartOfMainDiv--> 
-  <div class="container-fluid">
+                            <h2>Sign up</h2>
+                            <form method="post">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <div class="fieldWrapper">
+                                        {{ field.errors }}
+                                        <label>{{ field.label_tag }}</label> {{ field }}
+                                    </div>
+                                {% endfor %}
+                                <button type="submit">Sign up</button>
+                            </form>
 
-    <h1 align="center">Welcome to HiveList</h1>
-
-    
-    <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 col-centered">
-      <div class="card gedf-card ps-body">
-        <div class="card-body"><center>
-          <!--Description of HiveList-->
-          <div class="ps-general">
-           
-		<h2>Sign up</h2>
-	    	<form method="post">
-                {% csrf_token %}
-                    {% for field in form %}
-                        <div class="fieldWrapper">
-                            {{ field.errors }}
-                            <label>{{ field.label_tag }}</label> {{ field }}
                         </div>
-                    {% endfor %}
-		<!--{{ form.as_table }}-->
-		<button type="submit">Sign up</button>
-		</form>
-
-
-          </div>
-        </center>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-        <br>
-      </div>
     </div>
-    <div class="col-md-3"></div>
-    </div>
-
-    {% endblock %}
+{% endblock %}

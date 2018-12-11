@@ -64,9 +64,9 @@ playlists = []
 for i in range(1, 200):
     p_name = fake.text(20)
     p_private = fake.boolean()
-    p_creation_date = fake.date()
+    p_creation_date = fake.date_between(start_date="-1y", end_date="-30d")
     p_description = fake.text(100)
-    p_vote_time = fake.date_time()
+    p_vote_time = fake.date_between(start_date="-30d", end_date="now")
     p_ranking = i
     p_voting_threshold = fake.random_int(1, 101)
     p_id = fake.uuid4()

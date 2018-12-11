@@ -1,54 +1,49 @@
 {% extends "non_funct_nav.html" %}
+{% load static %}
 
 {% block content %}
-<!---test comment-->
-<!---LoginPage-->
-
-	<!---StartOfMainDiv-->	
-	<div class="container-fluid">
-
-		<h1 align="center">Welcome to HiveList</h1>
-
-		
-		<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6 col-centered">
-			<div class="card gedf-card ps-body">
-				<div class="card-body">
-					<!---Description of HiveList-->
-					<div class="ps-general">
-						<body><p>
-							Put your playlist-making hobby to good use. Make playlists with your friends, vote on which songs you want added, and explore public playlists to become 
-							part of a brand new platform for playlist creation!<br><br><br><h4>Login or Create an Account to enter HiveList below.</h4></p>
-						</body>
-					</div>
-				</div>
-				<br>
-			</div>
-		</div>
-		<div class="col-md-3"></div>
-		</div>
+    <!---StartOfMainDiv-->
+    <div class="container-fluid">
+        <h1 align="center">Welcome to HiveList</h1>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 col-centered">
+                <div class="card gedf-card ps-body">
+                    <div class="card-body">
+                        <!---Description of HiveList-->
+                        <div class="ps-general">
+                            <body>
+                                <p>
+                                    Put your playlist-making hobby to good use. Make playlists with your friends, vote on
+                                    which songs you want added, and explore public playlists to become
+                                    part of a brand new platform for playlist creation!<br><br><br>
+                                    <h4>Login or Create an Account to enter HiveList below.</h4>
+                                </p>
+                            </body>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
 
 
+        <!---RowForBUttons-->
+        <div class="row">
+            <!---loginButton-->
+            <div class="col-md-6 text-center">
+                <a button type="button" style="color:black;" class="btn btn-success btn-block" href="{% url 'login' %}">log
+                    In</a>
+            </div>
 
-		<!---RowForBUttons-->
-		<div class="row">
 
-			<!---loginButton-->
-			<div class="col-md-6 text-center">
-				<a button type="button" style="color:black;" class="btn btn-success btn-block" href="{% url 'login' %}">log In</a>
-			</div>
-
-
-			<!---makeAccountButton-->
-			<div class="col-md-6 text-center">
-				<a button type="button" style="color:black;" class="btn btn-success btn-block" href="{% url 'signup' %}">Make New Account</a>
-			</div>
-
-		</div>
-
-	<!---endOfMainDiv-->
-	</div>
-	</body>
-
-      {% endblock %}
+            <!---makeAccountButton-->
+            <div class="col-md-6 text-center">
+                <a button type="button" style="color:black;" class="btn btn-success btn-block"
+                   href="{% url 'signup' %}">Make New Account</a>
+            </div>
+        </div>
+        <!---endOfMainDiv-->
+    </div>
+{% endblock %}

@@ -20,13 +20,26 @@ def index(request):
     # Render the HTML tmeplate index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
+def upvote(request, song_instance_id, playlist_id):
+    song_instance = SongInstance.objects.get(pk=song_instance_id)
+    song_instance.number_yes_votes = song_instance.number_yes_votes + 1
+    song_instance.save()
+    return redirect('currentPlaylist', playlist_id)
+
+def downvote(request, song_instance_id, playlist_id):
+    song_instance = SongInstance.objects.get(pk=song_instance_id)
+    song_instance.number_no_votes = song_instance.number_no_votes + 1
+    song_instance.save()
+    return redirect('currentPlaylist', playlist_id)
+
+
 @login_required(login_url='/accounts/login/')
 def currentPlaylist(request, playlist_id):
     playlist = Playlist.objects.get(playlist_id__exact=playlist_id)
     songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id)
     all_songInstances = SongInstance.objects.filter(playlist_id__exact=playlist.playlist_id).values('song_id')
     all_songs = Song.objects.filter(song_id__in=all_songInstances)
-
+    creator = Playlist.objects.get(playlist_id__exact=playlist_id)
     form = AddSongForm()
     voteForm = VoteForm()
     if request.method == "POST":
@@ -54,6 +67,7 @@ def currentPlaylist(request, playlist_id):
         "current_playlist": playlist,
         "form": form,
         "voteForm": voteForm,
+        "creator": creator
     }
     return render(request, "currentPlaylist.html", context=context)
 
@@ -62,7 +76,7 @@ def Explore(request):
     playlists = Playlist.objects.all()[:10]
     playlist_ids = Playlist.objects.all()[:10].values('playlist_id')
     all_songInstances = SongInstance.objects.filter(playlist_id__in=playlist_ids).values('song_id')
-    songs = Song.objects.filter(song_id__in=all_songInstances)
+    songs = Song.objects.all()[0:10]
     context = {
         "popular_playlists": playlists,
         "popular_songs": songs,
@@ -159,7 +173,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/HiveList/profile')
+            return redirect('/HiveList/home')
             
     else:
         form = SignUpForm()   
