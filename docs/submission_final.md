@@ -123,6 +123,13 @@ Our application is unique mostly because of the voting feature. Now you can buil
 
 ***Authentication/Authorization: A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.
 
-***Team Choice: From submission 3, we were able to implement a create playlist form, playlist editing, and voting functionality. However, instead of focusing on implementing the lost password function, we worked on javascript that allowed the explore page to filter the songs by genre with a functioning search bar. 
+# Team Choice: From submission 3, we were able to implement:
+* create playlist form
+	* description
+* playlist editing 
+	* description
+* voting functionality.
+	* description
+* Instead of focusing on implementing the lost password function, we worked on javascript that allowed the explore page to filter the songs by genre with a functioning search bar. 
 
 ***Conclusion: A conclusion describing your team’s experience in working on this project. This should include what you learned through the design and implementation process, the difficulties you encountered, what your team would have liked to know before starting the project that would have helped you later, and any other technical hurdles that your team encountered.
