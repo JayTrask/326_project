@@ -84,7 +84,42 @@ Our application is unique mostly because of the voting feature. Now you can buil
 
 ***Data Model: A final up-to-date diagram of your data model including a brief description of each of the entities in your model and their relationships.
 
-***URL Routes/Mappings: A final up-to-date table of all the URL routes that your application supports and a short description of what those routes are used for. You should also indicate any authentication and permissions on those routes.
+# URL Routes/Mappings:
+
+* / 
+	* The index page of our application allows two options; login and register, both of which redirect you to the login/registration pages provided by django.
+
+* currentPlaylist/<uuid:playlist_id>
+	* The currentPlaylist page is passed a playlist_id.  This page shows the current playlist, allowing the user to add songs as well as vote on songs.
+
+* home/
+	* The user is redirected to the home page after logging in. The home page contains an overview of in progress/finished playlists as well as some statistical data such as top 10 playlists and popular songs.
+
+* explore/
+	* The explore page shows the user suggested songs and playlists.
+
+* mylists/
+	* The mylists page displays a users in progress as well as finished playlists, with the option to redirect to any of said playlist's detail page.
+
+* profile/
+	* The profile page displays basic information about the user as well as includes forms to change around users settings.
+
+* playlistSettings/
+	* Playlist settings allow the user to alter an instance of a playlist.
+
+* signup/
+	* The sign-up page integrates django's user authentication, and redirects the user to the login page upon success.
+
+* mylists/create_playlist/
+	* This URL brings the user to a form to create a new playlist. Upon completion the user will be redirected to the mylists page.
+
+* currentPlaylist/upvote/<uuid:playlist_id>/<uuid:song_instance_id>
+	* This url is the redirect for when a user upvotes a song instance in a playlist. The playlist_id is passed so that the user may be redirected to the same currentplaylist page, and the song_instance_id is passed in order to increment the instance in the database.
+
+* currentPlaylist/downvote/<uuid:playlist_id>/<uuid:song_instance_id>
+	* This url is the redirect for when a user downvotes a song instance in a playlist. The playlist_id is passed so that the user may be redirected to the same currentplaylist page, and the song_instance_id is passed in order to increment the instance in the database.
+
+* Note: All pages except for the login, index, and signup pages have a redirect to the login page if the user is not currently logged in.
 
 ***Authentication/Authorization: A final up-to-date description of how users are authenticated and any permissions for specific users (if any) that you used in your application. You should mention how they relate to which UI views are accessible.
 
