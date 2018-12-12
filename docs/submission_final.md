@@ -140,12 +140,12 @@ Our application is unique mostly because of the voting feature. Now you can buil
 
 # Team Choice: From submission 3, we were able to implement:
 * create playlist form
-	* description
+	* The create playlist form allows the user to make a new playlist. The fields that need to be completed to make a new playlist include name, description, voting date, voting threshold, and public or private. The newly created playlist gets added to the users playlists. This was implemented by using django forms and django views. 
 * playlist editing 
-	* description
+	* After completing the create playlist form, we implemented a form to add songs to a playlist. We made a dropdown menu with all the songs as options. The songs were generated from the faked data in init.py. After a user selected a song, the page was updated with the playlist containing the recently selected song. This was implemented by using django forms and django views.   
 * voting functionality.
-	* description
-* Instead of focusing on implementing the lost password function, we worked on javascript that allowed the explore page to filter the songs by genre with a functioning search bar. 
+	* Additionally, we were able to implement the voting functionality. The voting functionality allowed the user to update the vote counts on songs from a specific playlist. When a user updated the votes, the page was updated to show the new counts. The voting functionality was one of the most difficult pieces for our team to implement. This was implemented by using django forms and django views.  
+* Lastly, instead of focusing on implementing the lost password function, we worked on javascript that allowed the explore page to filter the songs by genre with a functioning search bar. 
 
 # Conclusion: A conclusion describing your team’s experience in working on this project. This should include what you learned through the design and implementation process, the difficulties you encountered, what your team would have liked to know before starting the project that would have helped you later, and any other technical hurdles that your team encountered.
 
