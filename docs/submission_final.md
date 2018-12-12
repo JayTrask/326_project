@@ -1,29 +1,4 @@
-﻿Checklist by points:
-[x]	Inclusion of title (3 points)
-[]	Inclusion of each section (12 points)
-[x]	Proper usage of the english language and well written (5 points)
-[]	Solid description and presentation of the following sections (10 points):
-	[EE]	User Interface (2 points)
-	[]	Data Model (2 points)
-	[]	URL Routes/Mappings (2 points)
-	[]	Authentication/Authorization (2 points)
-	[]	Team Choice (2 points)
-
-Checklist by section:
-[x]	Title
-[x]	Subtitle
-[x] Semester
-[x] Overview
-[x] Team Members
-[EE]	UI
-[]	Data Model
-[JT]	URL Routes/Mapping
-[JT]	Authentication/Authorization
-[]	Team Choice
-[]	Conclusion
-
-
-# Title: O-Big O
+﻿# Title: O-Big O
 
 ## Subtitle: HiveList
 ## Semester: Fall 2018
@@ -82,43 +57,43 @@ Our application is unique mostly because of the voting feature. Now you can buil
 	* Navigation bar works on all pages when you are logged in.
 	* Log out works on every page, and this will bring you back to the log in screen.
 
-# Data Model: A final up-to-date diagram of your data model including a brief description of each of the entities in your model and their relationships.
+# Data Model:
 
-	* ![DataModel](final-imgs/datamodel.png)
-	* Playlist
-		* This is a playlist that has songs and other specific information, as listed in the model, such as an id, a name, when it was created, description, ranking, voting threshold, whether or not it is private, and when voting for songs will end.
-		* This has a 1...* relationship with contributors, because a playlist will have at least one contributor, and in the other direction it is 0...* because contributors will add to either 0 or many playlists. 
-		* A playlist can have no instances of a song, but then it will have songs added to it. Each song instance is only in one playlist though, because it is created when a song is put in a playlist, and then that songinstance will only belong there.
+* Our data model diagram:
+![DataModel](final-imgs/datamodel.png)
+* Playlist
+	* This is a playlist that has songs and other specific information, as listed in the model, such as an id, a name, when it was created, description, ranking, voting threshold, whether or not it is private, and when voting for songs will end.
+	* This has a 1...* relationship with contributors, because a playlist will have at least one contributor, and in the other direction it is 0...* because contributors will add to either 0 or many playlists. 
+	* A playlist can have no instances of a song, but then it will have songs added to it. Each song instance is only in one playlist though, because it is created when a song is put in a playlist, and then that songinstance will only belong there.
 
-	* Contributors
-		* These are users who have added to a specific playlist
-		* The contributor will only be associated with one playlist, but a playlist can have 1 to many contributors.
-		* Contributors has a 1-1 relationship with User, and it is very similar to it. 
+* Contributors
+	* These are users who have added to a specific playlist
+	* The contributor will only be associated with one playlist, but a playlist can have 1 to many contributors.
+	* Contributors has a 1-1 relationship with User, and it is very similar to it. 
+* User
+	* This is implemented by Django for us.
+	* It has a 1-1 relationship with contributors.
+	* A user can add either 0 or many SongInstances, and a SongInstance is associated with only one user, the one who added the song.
 
-	* User
-		* This is implemented by Django for us.
-		* It has a 1-1 relationship with contributors.
-		* A user can add either 0 or many SongInstances, and a SongInstance is associated with only one user, the one who added the song.
+* Song Instance
+	* Song Instance is an instance of a song. This is so it can be added to a playlist and each of the instances of the song will have its own voting information.
+	* A user can add either 0 or many SongInstances, and a SongInstance is associated with only one user, the one who added the song.
+	* A SongInstance is associated with only one playlist. A playlist starts out with 0 SongInstances, but then has SongInstances added to it.
+	* A SongInstance is related to one Song, and it shares the same name. This is like the BookInstance model in this case. A Song can have 0 or many SongInstances.
 
-	* Song Instance
-		* Song Instance is an instance of a song. This is so it can be added to a playlist and each of the instances of the song will have its own voting information.
-		* A user can add either 0 or many SongInstances, and a SongInstance is associated with only one user, the one who added the song.
-		* A SongInstance is associated with only one playlist. A playlist starts out with 0 SongInstances, but then has SongInstances added to it.
-		* A SongInstance is related to one Song, and it shares the same name. This is like the BookInstance model in this case. A Song can have 0 or many SongInstances.
+* Song
+	* A song in our model has the title, artist, genre, and an id associated with it.
+	* A SongInstance is related to one Song, and it shares the same name. This is like the BookInstance model in this case. A Song can have 0 or many SongInstances.
+	* A song must have at least one artist, and an artist must have at least one song to be included in our data.
+	* A song has at least one genre, but a genre can have 0 or many songs related to it.
 
-	* Song
-		* A song in our model has the title, artist, genre, and an id associated with it.
-		* A SongInstance is related to one Song, and it shares the same name. This is like the BookInstance model in this case. A Song can have 0 or many SongInstances.
-		* A song must have at least one artist, and an artist must have at least one song to be included in our data.
-		* A song has at least one genre, but a genre can have 0 or many songs related to it.
+* Genre
+	* We have a list of the most popular genres of music.
+	* A song has at least one genre, but a genre can have 0 or many songs related to it.
 
-	* Genre
-		* We have a list of the most popular genres of music.
-		* A song has at least one genre, but a genre can have 0 or many songs related to it.
-
-	* Artist
-		* Each artist gets an id and a name.
-		* A song must have at least one artist, and an artist must have at least one song to be included in our data.
+* Artist
+	* Each artist gets an id and a name.
+	* A song must have at least one artist, and an artist must have at least one song to be included in our data.
 
 
 # URL Routes/Mappings:
@@ -172,6 +147,6 @@ Our application is unique mostly because of the voting feature. Now you can buil
 	* description
 * Instead of focusing on implementing the lost password function, we worked on javascript that allowed the explore page to filter the songs by genre with a functioning search bar. 
 
-***Conclusion: A conclusion describing your team’s experience in working on this project. This should include what you learned through the design and implementation process, the difficulties you encountered, what your team would have liked to know before starting the project that would have helped you later, and any other technical hurdles that your team encountered.***
+# Conclusion: A conclusion describing your team’s experience in working on this project. This should include what you learned through the design and implementation process, the difficulties you encountered, what your team would have liked to know before starting the project that would have helped you later, and any other technical hurdles that your team encountered.
 
 Designing the project was fun with our group and we enjoyed working together to plan what we wanted the website to look like. When we started designing and implementing the interface, we learned a lot about HTML and CSS and especially how to link URLs to other pages which was a little difficult for us. Implementing the data model was the next step, and the team learned a lot about SQL databases and how to make them correctly. We had a lot of trouble with the user model because we tried to extend it at first, but we ended up using djangos default model and it fit our needs fine. Next was implementing features of the app itself. We added the ability to create a playlist and add it to the database, but we had trouble with editing the playlist. We also added functionality for each playlist to have songs on them and vote for their spot on the playlist. Adding songs to playlists was not so hard, and neither was displaying them on the explore pages, but allowing users to vote was by far the most difficult thing we had encountered during the project. Almost every member had been working on it for a few days by the time we finally got it to work. I think something we would have liked to know before starting the project is that djangos user model would work fine for us, so that we wouldnt have spent time trying to extend it and failing.
